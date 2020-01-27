@@ -1,2 +1,2 @@
-# vue-modules
-Vue web modules
+# vue-components
+Vue typescript layout components
