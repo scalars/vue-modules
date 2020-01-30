@@ -1,0 +1,13 @@
+{
+  "name": "vuemodules",
+  "version": "0.0.1",
+  "description": "Vue components",
+  "main": "index.js",
+  "repository": "git@github.com:MadrovTeam/vue-components.git",
+  "author": "Madrov S.A.S",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "lerna": "^3.20.2"
+  }
+}
