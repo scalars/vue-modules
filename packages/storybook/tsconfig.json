@@ -17,7 +17,7 @@
     ],
     "paths": {
       "@/*": [
-        "../*"
+        "./*"
       ]
     },
     "lib": [
@@ -28,7 +28,7 @@
     ]
   },
   "include": [
-    "stories/**/*.ts",
+    "stories/*.ts",
     "stories/*.vue"
   ],
   "exclude": [

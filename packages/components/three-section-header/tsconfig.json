@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./components/three-section-header",
     "types": [
       "webpack-env",
       "jest"
@@ -34,6 +34,6 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "components/three-section-header/node_modules"
   ]
 }
