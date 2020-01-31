@@ -1,24 +1,26 @@
 {
-  "name": "storybook",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@vuemodules/experience-selector",
+  "version": "0.0.1",
+  "private": false,
   "scripts": {
-    "storybook": "start-storybook -p 6006 --ci",
-    "build-storybook": "build-storybook"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --filename index src/main.ts",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "prepare": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.ts"
   },
+  "main": "lib/index.common.js",
+  "files": [
+    "lib/*",
+    "index.d.ts"
+  ],
   "dependencies": {
     "core-js": "^3.4.4",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
-    "vue-property-decorator": "^8.3.0",
-    "@vuemodules/experience-selector": "^0.0.1"
+    "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@storybook/addon-actions": "^5.3.9",
-    "@storybook/addon-links": "^5.3.9",
-    "@storybook/addons": "^5.3.9",
-    "@storybook/vue": "^5.3.9",
     "@types/jest": "^24.0.19",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
@@ -28,19 +30,14 @@
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
-    "babel-loader": "^8.0.6",
-    "babel-preset-vue": "^2.0.2",
-    "css-loader": "^3.4.2",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^8.0.0",
     "typescript": "~3.5.3",
-    "vue-loader": "^15.8.3",
-    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
