@@ -1,11 +1,11 @@
-import {ExperienceSelector} from "@vuemodules/experience-selector";
+import ExperienceSelector from '../../components/experience-selector/src/experience-selector.vue';
 
 export default {
-    title: 'Sections/Experience Selector',
-    component: ExperienceSelector
+  title: "Sections/Experience Selector",
+  component: ExperienceSelector
 };
 
 export const Default = () => ({
-    components: { ExperienceSelector },
-    template: '<experience-selector />'
+  components: { ExperienceSelector },
+  template: "<experience-selector />"
 });
