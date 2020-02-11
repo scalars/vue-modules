@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "strict": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/*.ts",
+    "src/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
