@@ -82,10 +82,10 @@ typings/
 # rollup.js default build output
 dist/
 
-# Uncomment the public line if your project uses Gatsby
+# Uncomment the assets line if your project uses Gatsby
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # https://create-react-app.dev/docs/using-the-public-folder/#docsNav
-# public
+# assets
 
 # Storybook build outputs
 .out
