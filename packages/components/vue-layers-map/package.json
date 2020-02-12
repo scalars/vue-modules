@@ -1,0 +1,50 @@
+{
+  "name": "@vuemodules/vuelayersmap",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --filename index src/main.js",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "prepare": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.js"
+  },
+  "main": "lib/index.common.js",
+  "files": [
+    "lib/*",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "bootstrap-vue": "^2.3.0",
+    "core-js": "^3.4.4",
+    "ol": "^6.2.0",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.2",
+    "vuelayers": "^0.12.0-alpha.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-unit-jest": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
