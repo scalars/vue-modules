@@ -1,5 +1,5 @@
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack4');
 
 module.exports = {
     entry: './src/template.vue',
@@ -10,7 +10,7 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".vue"],
         alias: {
-            vue$: 'vue/dist/vue.runtime.esm.js'
+            vue$: 'vue/dist/vue.esm.js'
         }
     },
     module: {

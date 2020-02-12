@@ -2,15 +2,14 @@
     <div class="template">{{ template }}</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
-
-@Component({
-    name: 'custom-template'
-})
-export default class CustomTemplate extends Vue {
-    @Prop({ default: 'template' }) template:string;
+<script>
+export default {
+    name: 'custom-template',
+    props: {
+        template: {
+            default: 'template'
+        }
+    }
 }
 </script>
 
