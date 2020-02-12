@@ -1,6 +1,6 @@
 {
   "name": "@vuemodules/vuelayersmap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,10 +17,11 @@
   "dependencies": {
     "bootstrap-vue": "^2.3.0",
     "core-js": "^3.4.4",
+    "css-loader": "^3.4.2",
     "ol": "^6.2.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
-    "vuelayers": "^0.12.0-alpha.1"
+    "vuelayers": "^0.11.5-beta.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
