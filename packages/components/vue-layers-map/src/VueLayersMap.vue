@@ -41,6 +41,7 @@
 </template>
 <script>
 export default {
+  name: "vue-layers-map",
   props: {
     zoom: { type: Number, default: 18 },
     center: {
