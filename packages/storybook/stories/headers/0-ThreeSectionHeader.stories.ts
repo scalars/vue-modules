@@ -1,4 +1,4 @@
-import ThreeSectionHeader from '../../../components/three-section-header/src/three-section-header.vue';
+import ThreeSectionHeader from '@vuemodules/three-section-header';
 
 export default {
     title: 'Headers/Three section header',

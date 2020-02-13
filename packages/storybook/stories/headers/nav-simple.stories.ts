@@ -1,5 +1,5 @@
 // @ts-ignore
-import NavSimple from "../../../components/header/nav-simple/src/NavSimple";
+import NavSimple from "@vuemodules/navsimple";
 
 export default {
     title: 'Nav/ Nav Simple',
