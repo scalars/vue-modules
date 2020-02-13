@@ -1,1 +1,1 @@
-declare module '@vuemodules/vuelayersmap'
+declare module '@vuemodules/card-item'
