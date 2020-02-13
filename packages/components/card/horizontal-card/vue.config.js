@@ -1,6 +1,6 @@
 module.exports = {
-  outputDir: "lib",
-  css: {
-    extract: false
-  }
+    outputDir: "lib",
+    css: {
+        extract: false
+    }
 };

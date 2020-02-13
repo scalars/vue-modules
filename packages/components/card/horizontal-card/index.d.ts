@@ -1,1 +1,1 @@
-declare module '@vuemodules/navsimple'
+declare module '@vuemodules/horizontal-card'

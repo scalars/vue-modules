@@ -1,20 +1,30 @@
 <template>
     <div class="container">
-        <!--    <Gallery002 class="gallery" :data="images" :per-page="{mobile:1,desktop:1}" />-->
+        <vueper-slides class="slides">
+            <vueper-slide
+                v-for="(image, i) in images"
+                :key="i"
+                :image="image"
+            />
+        </vueper-slides>
         <div class="content">
             <slot></slot>
         </div>
     </div>
 </template>
 
-<script lang="ts">
+<script>
+import { VueperSlides, VueperSlide } from "vueperslides";
+import "vueperslides/dist/vueperslides.css";
+
 export default {
     name: "horizontal-card",
+    components: {
+        VueperSlides,
+        VueperSlide
+    },
     props: {
         images: {
-            required: true
-        },
-        text: {
             required: true
         }
     }
@@ -22,12 +32,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$height: 300px;
 .container {
     display: flex;
     background-color: var(--primary, #e5fdff);
     border: 1px solid var(--primary-dark, #befaff);
-    max-height: $height;
+    max-height: 300px;
     margin-bottom: 20px;
 
     @media screen and (max-width: 991px) {
@@ -36,15 +45,12 @@ $height: 300px;
         height: auto;
     }
 
-    &:hover > .gallery > img {
-        transform: scale(1.1, 1.1);
-    }
-
-    .gallery {
+    .slides::v-deep {
         display: flex;
-        width: $height;
-        min-width: $height;
-        height: $height;
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        height: 300px;
         justify-content: center;
         align-items: center;
         overflow: hidden;
@@ -52,18 +58,17 @@ $height: 300px;
 
         @media screen and (max-width: 991px) {
             width: 100%;
-            height: 150px !important;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-                height: auto !important;
-            }
+            max-width: 100%;
         }
 
-        img {
+        .vueperslides__inner {
+            width: 100%;
             height: 100%;
-            transition: all 500ms ease-in-out;
+
+            .vueperslides__parallax-wrapper {
+                height: 100%;
+                padding-bottom: 0 !important;
+            }
         }
     }
 

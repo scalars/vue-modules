@@ -1,6 +1,6 @@
 {
   "name": "@vuemodules/horizontal-card",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve --public dev dev/server.js",
@@ -16,7 +16,8 @@
     "index.d.ts"
   ],
   "dependencies": {
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vueperslides": "^2.8.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
@@ -25,6 +26,7 @@
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "css-loader": "^3.4.2",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
@@ -32,7 +34,6 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.0",
-    "css-loader": "^3.4.2",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
