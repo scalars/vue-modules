@@ -9,6 +9,7 @@
   "dependencies": {
     "@vuemodules/experience-selector": "../components/experience-selector/",
     "@vuemodules/horizontal-card": "../components/card/horizontal-card/",
+    "@vuemodules/card-item": "../components/card/card-item/",
     "@vuemodules/navsimple": "../components/header/nav-simple/",
     "@vuemodules/three-section-header": "../components/three-section-header/",
     "@vuemodules/vuelayersmap": "../components/vue-layers-map/",

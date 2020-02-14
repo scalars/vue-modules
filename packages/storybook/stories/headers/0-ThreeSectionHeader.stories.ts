@@ -1,3 +1,4 @@
+// @ts-ignore
 import ThreeSectionHeader from '@vuemodules/three-section-header';
 
 export default {
