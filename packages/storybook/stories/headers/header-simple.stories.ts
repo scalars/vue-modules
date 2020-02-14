@@ -1,24 +1,24 @@
 // @ts-ignore
 import HeaderSimple from "../../../components/header/header-simple/src/HeaderSimple";
 // @ts-ignore
-import NavItemSimple from "../../../components/header/nav-item-simple/src/NavItemSimple";
+import NavSimple from "../../../components/header/nav-simple/src/NavSimple";
 
 export default {
     title: 'Nav/ Nav Simple',
-    component: NavItemSimple
+    component: HeaderSimple
 };
 
 export const Default = () => ({
-    components: { HeaderSimple, NavItemSimple },
+    components: { HeaderSimple, NavSimple },
     data() {
         return {
             links: [{name: "mylink.com", url: "mylink.com"}, {name: "otherlink.net", url: "otherlink.net"}]
         };
     },
     template: `<header-simple height="80px"
-                           fixed
+                                fixed
                               primary="#ff0000"
     > 
-        <nav-item-simple slot="end" :links="links" class="nav" />
+        <nav-simple slot="end" :links="links" class="nav" />
     </header-simple>`
 });
