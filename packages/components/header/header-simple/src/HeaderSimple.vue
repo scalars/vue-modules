@@ -1,15 +1,18 @@
 <template>
-  <Header
-    :primary="primary"
-    :height="height"
-    :fixed="fixed"
-  >
+  <Header :primary="primary" :height="height" :fixed="fixed">
     <div class="wrapper">
       <div class="start">
         <slot class="start" />
-        <MenuIcon class="d-lg-none menu-icon" @click="toggleMenu" :primary="primary">
+        <MenuIcon
+          class="d-lg-none menu-icon"
+          @click="toggleMenu"
+          :primary="primary"
+        >
           <div v-if="icon" v-html="icon" />
-          <Icon v-if="!icon" :style="{width: '60%', height: '60%', fill: primary}"/>
+          <Icon
+            v-if="!icon"
+            :style="{ width: '60%', height: '60%', fill: primary }"
+          />
         </MenuIcon>
       </div>
       <div class="end" :class="{ open: openMenu }" @click="toggleMenu">
@@ -34,20 +37,13 @@ import Icon from "!!vue-svg-loader!../assets/menu_icon_2.svg";
 import MenuIcon from "./MenuIcon";
 import Header from "./Header";
 
-const styles = {
-  appClass: {
-    color: ({themeColor}) => themeColor,
-  }
-};
-
 export default {
   name: "header-simple",
-  styles,
   props: {
     height: { type: String, default: "60px" },
     fixed: { type: Boolean, default: false },
     icon: { type: String, default: null },
-    primary: {type: String, default: "orange"}
+    primary: { type: String, default: "orange" }
   },
   components: {
     Icon,

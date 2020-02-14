@@ -1,6 +1,6 @@
 {
-  "name": "@vuemodules/navsimple",
-  "version": "0.0.2",
+  "name": "@vuemodules/navitemsimple",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",

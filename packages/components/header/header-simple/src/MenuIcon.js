@@ -2,11 +2,11 @@ import styled from "vue-styled-components";
 
 const MenuIconProps = { primary: String };
 
-const getPrimaryColor = (props) => {
-    return props.primary;
+const getPrimaryColor = props => {
+  return props.primary;
 };
 
-const MenuIcon = styled('span', MenuIconProps)`
+const MenuIcon = styled("span", MenuIconProps)`
   display: flex;
   width: 40px;
   height: 40px;
