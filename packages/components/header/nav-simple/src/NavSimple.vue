@@ -41,7 +41,6 @@ export default {
   },
   mounted() {
     this.setCurrentItem();
-    const self = this;
   },
   methods: {
     onHover(event) {
