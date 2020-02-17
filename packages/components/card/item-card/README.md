@@ -1,4 +1,4 @@
-# card-item
+# item-card
 
 ## Project setup
 ```

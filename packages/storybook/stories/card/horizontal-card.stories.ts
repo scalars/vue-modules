@@ -1,7 +1,8 @@
+// @ts-ignore
 import HorizontalCard from "@vuemodules/horizontal-card";
 
 export default {
-    title: 'Cards/Horizontal Card',
+    title: 'Card/Horizontal Card',
     component: HorizontalCard
 };
 
