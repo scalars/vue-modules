@@ -1,7 +1,7 @@
 <template>
   <nav @mouseleave="setCurrentItem">
     <ul>
-      <div class="marker" :style="{width: widthItem, left: markerPosition}" />
+      <MarkerItem :widthItem="widthItem" :markerPosition="markerPosition" :primary="primary" />
       <li v-for="(link, index) in links" :key="index" :style="{width: widthItem}" @mouseover="onHover($event)">
         <a v-if="($router.currentRoute.fullPath == lang && link.url == 'index') || lang+'/'+link.url == $router.currentRoute.fullPath" v-scroll-to="{el:link.id, offset: -80}" class="link">{{ link.name }}</a>
         <a v-else-if="!($router.currentRoute.fullPath == lang && link.url == 'index') && lang+'/'+link.url != $router.currentRoute.fullPath" href="linkToPath(link.url)" class="link" @click="setCurrentItem">
@@ -13,13 +13,16 @@
 </template>
 
 <script>
+  import MarkerItem from "./Marker";
   export default {
+    name: "nav-simple",
     props: {
       links: { type: Array, required: true },
       widthItem: { type: String, default: '130px' },
       fixed: { type: Boolean, default: false },
+      primary: { type: String, default: "orange" },
       linkToPath:{default: function (link) {
-          return (props) => {}
+          return () => {}
         }},
       $router: {default: function () {
           return {currentRoute: {}}
@@ -30,6 +33,9 @@
       $i18n: {default: function () {
           return {loadedLanguages: []}
         }},
+    },
+    components: {
+      MarkerItem,
     },
     data () {
       return {
@@ -69,7 +75,6 @@
 </script>
 
 <style lang="scss" scoped>
-  $primary: red;
   nav {
     height: 100%;
     position: relative;
@@ -114,21 +119,6 @@
           text-align: center;
           cursor: pointer;
         }
-      }
-    }
-
-    .marker {
-      position: absolute;
-      height: 3px;
-      background-color: $primary;
-      background: linear-gradient(to right, transparent 0%, rgba(saturate($primary, 50%), 0.7) 50%, transparent 100%);
-      border-radius: 50%;
-      bottom: 0;
-      left: 0;
-      transition: all 0.2s ease-in-out;
-
-      @media screen and (max-width: 991px){
-        display: none;
       }
     }
   }
