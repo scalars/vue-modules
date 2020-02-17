@@ -1,35 +1,16 @@
 <template>
   <nav @mouseleave="setCurrentItem">
     <ul>
-      <MarkerItem
-        :widthItem="widthItem"
-        :markerPosition="markerPosition"
-        :primary="primary"
-      />
-      <li
-        v-for="(link, index) in links"
-        :key="index"
-        :style="{ width: widthItem }"
-        @mouseover="onHover($event)"
-      >
-        <a
-          v-if="
-            ($router.currentRoute.fullPath == lang && link.url == 'index') ||
-              lang + '/' + link.url == $router.currentRoute.fullPath
-          "
-          v-scroll-to="{ el: link.id, offset: -80 }"
-          class="link"
-          >{{ link.name }}</a
-        >
-        <a
-          v-else-if="
-            !($router.currentRoute.fullPath == lang && link.url == 'index') &&
-              lang + '/' + link.url != $router.currentRoute.fullPath
-          "
-          href="linkToPath(link.url)"
-          class="link"
-          @click="setCurrentItem"
-        >
+      <MarkerItem :widthItem="widthItem" :markerPosition="markerPosition" :primary="primary"/>
+      <li v-for="(link, index) in links"
+          :key="index"
+          :style="{ width: widthItem+'px' }"
+          @mouseout="setCurrentItem()"
+          @mouseover="onHover($event)">
+        <a v-if="link.url" :href="link.url" class="link" :target="link.target">
+          {{ link.name }}
+        </a>
+        <a v-else-if="link.id" v-scroll-to="{ el: link.id, offset: -80 }" class="link">
           {{ link.name }}
         </a>
       </li>
@@ -38,56 +19,29 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import VueScrollTo from 'vue-scrollto';
+Vue.use(VueScrollTo);
 import MarkerItem from "./Marker";
 export default {
   name: "nav-simple",
   props: {
     links: { type: Array, required: true },
-    widthItem: { type: String, default: "130px" },
+    widthItem: { type: Number, default: 130 },
     fixed: { type: Boolean, default: false },
-    primary: { type: String, default: "orange" },
-    linkToPath: {
-      default: function() {
-        return () => {};
-      }
-    },
-    $router: {
-      default: function() {
-        return { currentRoute: {} };
-      }
-    },
-    $eventBus: {
-      default: function() {
-        return { $on: () => {} };
-      }
-    },
-    $i18n: {
-      default: function() {
-        return { loadedLanguages: [] };
-      }
-    }
+    primary: { type: String, default: "orange" }
   },
   components: {
     MarkerItem
   },
   data() {
     return {
-      markerPosition: "-" + this.widthItem
-    };
-  },
-  computed: {
-    lang() {
-      return this.$i18n.loadedLanguages[0] === this.$i18n.defaultLocale
-        ? "/"
-        : "/" + this.$i18n.loadedLanguages[0];
+      markerPosition: "0px"
     }
   },
   mounted() {
     this.setCurrentItem();
     const self = this;
-    this.$eventBus.$on("reset-nav", function() {
-      self.markerPosition = "-" + self.widthItem;
-    });
   },
   methods: {
     onHover(event) {
@@ -96,20 +50,11 @@ export default {
       this.markerPosition = offsetElement - offsetParent + "px";
     },
     setCurrentItem() {
-      for (let i = 0; i < this.links.length; i++) {
-        const numero = this.widthItem.match(/^\d+/g);
-        if (
-          this.$router.currentRoute.fullPath === this.lang &&
-          this.links[i].url === "index"
-        ) {
-          this.markerPosition = i * parseInt(numero[0]) + "px";
-        } else if (
-          (this.lang !== "/" ? this.lang : "") + "/" + this.links[i].url ===
-          this.$router.currentRoute.fullPath
-        ) {
-          this.markerPosition = i * parseInt(numero[0]) + "px";
+      this.links.forEach((link, index) => {
+        if (link.isActive) {
+          this.markerPosition = index * this.widthItem + "px";
         }
-      }
+      });
     }
   }
 };

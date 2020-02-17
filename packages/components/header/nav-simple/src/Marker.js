@@ -1,6 +1,6 @@
 import styled from "vue-styled-components";
 const MarkerProps = {
-  widthItem: String,
+  widthItem: Number,
   markerPosition: String,
   primary: String
 };
@@ -10,7 +10,7 @@ const getPrimaryColor = props => {
 };
 
 const getWidth = props => {
-  return props.widthItem;
+  return props.widthItem + "px";
 };
 
 const getPosition = props => {
