@@ -1,167 +1,166 @@
 <template>
-  <div
-    class="header"
-    :style="{ height: height, position: fixed ? 'fixed' : 'relative' }"
-  >
-    <div class="wrapper">
-      <div class="start">
-        <slot class="start" />
-        <span class="d-lg-none menu-icon" @click="toggleMenu">
-          <div v-if="icon" v-html="icon" />
-          <MenuIcon v-if="!icon" />
-        </span>
-      </div>
-      <div class="end" :class="{ open: openMenu }" @click="toggleMenu">
-        <slot name="center">
-          <div />
-        </slot>
-        <slot name="end">
-          <div />
-        </slot>
-      </div>
-      <div
-        class="shadow"
-        :style="{ top: openMenu ? '0' : '-100vh' }"
-        @click="toggleMenu"
+  <nav @mouseleave="setCurrentItem">
+    <ul>
+      <MarkerItem
+        :widthItem="widthItem"
+        :markerPosition="markerPosition"
+        :primary="primary"
       />
-    </div>
-  </div>
+      <li
+        v-for="(link, index) in links"
+        :key="index"
+        :style="{ width: widthItem }"
+        @mouseover="onHover($event)"
+      >
+        <a
+          v-if="
+            ($router.currentRoute.fullPath == lang && link.url == 'index') ||
+              lang + '/' + link.url == $router.currentRoute.fullPath
+          "
+          v-scroll-to="{ el: link.id, offset: -80 }"
+          class="link"
+          >{{ link.name }}</a
+        >
+        <a
+          v-else-if="
+            !($router.currentRoute.fullPath == lang && link.url == 'index') &&
+              lang + '/' + link.url != $router.currentRoute.fullPath
+          "
+          href="linkToPath(link.url)"
+          class="link"
+          @click="setCurrentItem"
+        >
+          {{ link.name }}
+        </a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
-import MenuIcon from "../assets/menu_icon_2.svg";
-
+import MarkerItem from "./Marker";
 export default {
   name: "nav-simple",
   props: {
-    height: { type: String, default: "60px" },
+    links: { type: Array, required: true },
+    widthItem: { type: String, default: "130px" },
     fixed: { type: Boolean, default: false },
-    icon: { type: String, default: null }
+    primary: { type: String, default: "orange" },
+    linkToPath: {
+      default: function() {
+        return () => {};
+      }
+    },
+    $router: {
+      default: function() {
+        return { currentRoute: {} };
+      }
+    },
+    $eventBus: {
+      default: function() {
+        return { $on: () => {} };
+      }
+    },
+    $i18n: {
+      default: function() {
+        return { loadedLanguages: [] };
+      }
+    }
   },
   components: {
-    MenuIcon
+    MarkerItem
   },
   data() {
     return {
-      openMenu: false
+      markerPosition: "-" + this.widthItem
     };
   },
+  computed: {
+    lang() {
+      return this.$i18n.loadedLanguages[0] === this.$i18n.defaultLocale
+        ? "/"
+        : "/" + this.$i18n.loadedLanguages[0];
+    }
+  },
+  mounted() {
+    this.setCurrentItem();
+    const self = this;
+    this.$eventBus.$on("reset-nav", function() {
+      self.markerPosition = "-" + self.widthItem;
+    });
+  },
   methods: {
-    toggleMenu: function() {
-      this.openMenu = !this.openMenu;
+    onHover(event) {
+      const offsetParent = event.srcElement.parentNode.parentNode.offsetLeft;
+      const offsetElement = event.srcElement.offsetLeft;
+      this.markerPosition = offsetElement - offsetParent + "px";
+    },
+    setCurrentItem() {
+      for (let i = 0; i < this.links.length; i++) {
+        const numero = this.widthItem.match(/^\d+/g);
+        if (
+          this.$router.currentRoute.fullPath === this.lang &&
+          this.links[i].url === "index"
+        ) {
+          this.markerPosition = i * parseInt(numero[0]) + "px";
+        } else if (
+          (this.lang !== "/" ? this.lang : "") + "/" + this.links[i].url ===
+          this.$router.currentRoute.fullPath
+        ) {
+          this.markerPosition = i * parseInt(numero[0]) + "px";
+        }
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-$primary: red;
-
-.header {
-  width: 100%;
-  padding: 0px 15px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: #fff;
+nav {
+  height: 100%;
   position: relative;
-  z-index: 5;
 
   @media screen and (max-width: 991px) {
-    flex-flow: column;
-    padding: 0px;
-    box-shadow: none;
-    box-sizing: border-box;
-
-    &::before {
-      content: " ";
-      width: 100%;
-      height: 2px;
-      background-color: rgba(darken($primary, 10), 0.6);
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 11;
-    }
+    width: 100%;
   }
 
-  .wrapper {
+  ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0;
+    padding: 0;
     height: 100%;
-    max-width: 1366px;
-    margin: auto;
+    list-style: none;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
 
-    .start {
-      background-color: #fff;
-      @media screen and (max-width: 991px) {
-        padding: 0 15px;
-        display: flex;
-        width: 100%;
-        min-height: 100%;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-        z-index: 10;
-      }
+    @media screen and (max-width: 991px) {
+      flex-flow: column;
+      height: auto;
+      width: 100%;
     }
 
-    .end {
-      position: relative;
+    li {
+      display: block;
       height: 100%;
-      display: flex;
 
       @media screen and (max-width: 991px) {
-        flex-flow: column;
-        position: absolute;
-        top: -500px;
-        left: 0;
-        width: 100%;
-        height: auto;
-        z-index: 5;
-        transition: all 0.5s ease-in-out;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        height: 70px;
+        width: 100% !important;
+      }
 
-        &.open {
-          top: 100% !important;
-        }
+      a {
+        font-size: 0.9em;
+        color: #000;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
       }
     }
-
-    .shadow {
-      position: absolute;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: all 500ms ease-in-out;
-      display: none;
-
-      @media screen and (max-width: 991px) {
-        display: block;
-      }
-    }
-  }
-}
-
-.menu-icon {
-  display: flex;
-  width: 40px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.3),
-    0 0 0 7px rgba(darken($primary, 10), 0.6);
-  cursor: pointer;
-  margin-right: 10px;
-  color: $primary;
-
-  svg {
-    width: 60%;
-    height: 60%;
-    fill: $primary;
   }
 }
 </style>

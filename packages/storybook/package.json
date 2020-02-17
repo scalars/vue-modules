@@ -7,12 +7,9 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@vuemodules/experience-selector": "../components/experience-selector/",
-    "@vuemodules/horizontal-card": "../components/card/horizontal-card/",
-    "@vuemodules/card-item": "../components/card/card-item/",
-    "@vuemodules/navsimple": "../components/header/nav-simple/",
-    "@vuemodules/three-section-header": "../components/three-section-header/",
-    "@vuemodules/vuelayersmap": "../components/vue-layers-map/",
+    "@vuemodules/horizontal-card": "^1.0.0",
+    "@vuemodules/headersimple": "^1.0.0",
+    "@vuemodules/vuelayersmap": "^0.0.3",
     "core-js": "^3.4.4",
     "vue": "^2.6.11",
     "vue-class-component": "^7.0.2",
@@ -20,6 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/runtime-corejs2": "^7.8.4",
     "@storybook/addon-actions": "^5.3.9",
     "@storybook/addon-links": "^5.3.9",
     "@storybook/addons": "^5.3.9",

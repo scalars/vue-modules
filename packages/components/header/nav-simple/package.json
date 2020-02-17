@@ -1,13 +1,13 @@
 {
   "name": "@vuemodules/navsimple",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --filename index src/main.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "prepare": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.js"
+    "prepublishOnly": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.js"
   },
   "main": "lib/index.common.js",
   "files": [
@@ -20,7 +20,8 @@
     "css-loader": "^3.4.2",
     "ol": "^6.2.0",
     "vue": "^2.6.11",
-    "vue-class-component": "^7.0.2"
+    "vue-class-component": "^7.0.2",
+    "vue-styled-components": "^1.4.14"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
