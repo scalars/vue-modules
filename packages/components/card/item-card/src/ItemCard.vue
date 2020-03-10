@@ -1,5 +1,5 @@
 <template>
-  <div :class="alt ? 'blog-card alt' : 'blog-card'">
+  <div class="item-card" :class="{ alt }">
     <div class="meta">
       <div class="photo" :style="'background-image: url(' + image + ')'" />
     </div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "card-item",
+  name: "item-card",
   props: {
     title: { required: true, type: String },
     description: { required: true, type: String },
@@ -30,18 +30,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$lighten: 0%;
 $primary: red;
 $light-primary: orange;
 
-.blog-card {
+.item-card {
   display: flex;
   flex-direction: column;
-  margin: 5% 0;
   box-shadow: 0 3px 7px -1px rgba(#000, 0.3);
-  margin-bottom: 1.6%;
   line-height: 1.4;
-  background: lighten($primary, $lighten);
+  background: var(--primary, $primary);
   font-family: sans-serif;
   border-radius: 5px;
   overflow: hidden;
@@ -52,7 +49,7 @@ $light-primary: orange;
   a {
     color: inherit;
     &:hover {
-      color: lighten($light-primary, 20%);
+      color: var(--light-primary, $light-primary);
     }
   }
   &:hover {
@@ -77,7 +74,7 @@ $light-primary: orange;
   }
   .description {
     padding: 1rem;
-    background: lighten($primary, $lighten);
+    background: var(--primary, $primary);
     position: relative;
     z-index: 1;
     h1 {
@@ -86,7 +83,7 @@ $light-primary: orange;
       font-size: 1.6em;
       font-weight: 300;
       text-transform: uppercase;
-      color: lighten($light-primary, 20%);
+      color: var(--light-primary, $light-primary);
     }
     .description-text {
       /deep/ * {
@@ -100,7 +97,7 @@ $light-primary: orange;
       margin: 6% 0;
       text-align: right;
       a {
-        color: lighten($light-primary, 20%);
+        color: var(--light-primary, $light-primary);
         display: inline-block;
         position: relative;
 
@@ -120,7 +117,7 @@ $light-primary: orange;
         content: "";
         position: absolute;
         height: 5px;
-        background: lighten($light-primary, 20%);
+        background: var(--light-primary, $light-primary);
         width: 35px;
         top: -0.75rem;
         border-radius: 3px;
@@ -141,7 +138,7 @@ $light-primary: orange;
   }
   @media screen and (min-width: 991px) {
     flex-direction: row;
-    max-width: auto;
+    max-width: none;
     .meta {
       flex-basis: 40%;
       height: auto;
@@ -151,7 +148,7 @@ $light-primary: orange;
       &:before {
         transform: skewX(-3deg);
         content: "";
-        background: lighten($primary, $lighten);
+        background: var(--primary, $primary);
         width: 30px;
         position: absolute;
         left: -10px;
