@@ -1,6 +1,6 @@
 {
   "name": "@vuemodules/navsimple",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -21,7 +21,8 @@
     "ol": "^6.2.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.0.2",
-    "vue-styled-components": "^1.4.14"
+    "vue-styled-components": "^1.4.14",
+    "vue-scrollto": "^2.17.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

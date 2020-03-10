@@ -1,29 +1,18 @@
-# three-section-header
+# @vuemodules/navsimple
 
-## Project setup
+#### Usage
 ```
-yarn install
-```
+//js
+links: [
+           {name: "mylink.com", url: "mylink.com", isActive: true}, //Active element to be underlined
+           {name: "mylink1.com", id: "#test1"}, //Will scroll to #test1
+           {name: "mylink2.com", id: "#test2"},
+           {name: "otherlink.net", url: "otherlink.net", target: "_blank"}, //Allows to set the target attribute for <a>
+           {name: "otherlink1.net", url: "otherlink1.net"}
+       ]
 
-### Compiles and hot-reloads for development
+//template
+<nav-simple :links="links"/>
 ```
-yarn serve
-```
+Demo https://vuemodules.scalars.co/?path=/story/nav-nav-simple--default
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
