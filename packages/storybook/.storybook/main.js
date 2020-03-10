@@ -1,6 +1,15 @@
 module.exports = {
   stories: ['../stories/**/*.stories.[tj]s'],
-  addons: ['@storybook/addon-actions', '@storybook/addon-links'],
+  addons: [
+    '@storybook/addon-knobs/register',
+    '@storybook/addon-actions',
+    '@storybook/addon-links'
+  ],
+  configureWebpack: {
+    externals: {
+      'vue-property-decorator': 'Vue'
+    }
+  },
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.ts(x?)$/,

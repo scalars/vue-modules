@@ -11,6 +11,8 @@
     "lerna": "^3.20.2"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna exec --ignore storybook yarn build",
+    "deploy": "lerna publish --ignore storybook"
   }
 }

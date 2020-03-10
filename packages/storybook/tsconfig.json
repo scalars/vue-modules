@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
@@ -17,7 +18,7 @@
     ],
     "paths": {
       "@/*": [
-        "../*"
+        "./*"
       ]
     },
     "lib": [
@@ -28,7 +29,7 @@
     ]
   },
   "include": [
-    "stories/**/*.ts",
+    "stories/*.ts",
     "stories/*.vue"
   ],
   "exclude": [

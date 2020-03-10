@@ -9,8 +9,9 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "sourceMap": true,
-    "baseUrl": "./components/three-section-header",
+    "baseUrl": ".",
     "types": [
       "webpack-env",
       "jest"
@@ -34,6 +35,6 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "components/three-section-header/node_modules"
+    "node_modules"
   ]
 }
