@@ -7,7 +7,7 @@
     "build": "vue-cli-service build --target lib --filename index src/toast.vue",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "prepublishOnly": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --name index src/toast.vue"
+    "prepare": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --name index src/toast.vue"
   },
   "main": "lib/index.common.js",
   "files": [

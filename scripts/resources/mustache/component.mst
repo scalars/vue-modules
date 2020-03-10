@@ -1,0 +1,14 @@
+<template>
+    <div>
+        {{component_name}}
+    </div>
+</template>
+
+<script>
+export default {
+    name: "{{kebab_component_name}}"
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

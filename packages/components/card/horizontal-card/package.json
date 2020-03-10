@@ -7,7 +7,7 @@
     "build": "vue-cli-service build --target lib --filename index src/main.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "prepublishOnly": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.js"
+    "prepare": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.js"
   },
   "main": "lib/index.common.js",
   "types": "index.d.ts",

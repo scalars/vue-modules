@@ -1,0 +1,1 @@
+declare module '@vuemodules/{{kebab_component_name}}'

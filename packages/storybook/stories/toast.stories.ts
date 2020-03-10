@@ -1,3 +1,4 @@
+// @ts-ignore
 import Toast from "../../components/toast/src/toast.vue";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 

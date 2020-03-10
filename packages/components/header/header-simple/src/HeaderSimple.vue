@@ -34,8 +34,8 @@
 
 <script>
 import Icon from "!!vue-svg-loader!../assets/menu_icon_2.svg";
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import MenuIcon from "./MenuIcon";
 import Header from "./Header";
 

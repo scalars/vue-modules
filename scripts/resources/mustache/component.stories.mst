@@ -1,0 +1,12 @@
+// @ts-ignore
+import {{component_name}} from "{{{relative_path}}}/{{kebab_component_name}}/src/{{component_name}}.vue";
+
+export default {
+    title: '{{{component_path}}}/{{component_name}}',
+    component: {{component_name}}
+};
+
+export const Default = () => ({
+    components: { {{component_name}} },
+    template: '<{{kebab_component_name}}/>'
+});

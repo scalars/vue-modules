@@ -13,6 +13,11 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --ignore storybook yarn build",
-    "deploy": "lerna publish --ignore storybook"
+    "deploy": "lerna publish --ignore storybook",
+    "generate": "node scripts/generate.js"
+  },
+  "devDependencies": {
+    "commander": "^4.1.1",
+    "mustache": "^4.0.0"
   }
 }

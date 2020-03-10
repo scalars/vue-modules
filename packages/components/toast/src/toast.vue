@@ -8,34 +8,41 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
-
-@Component({})
-export default class Toast extends Vue {
-  @Prop({ default: "absolute" }) positionType: string;
-  @Prop({
-    default: () => ({
-      top: "0",
-      left: "0"
-    })
-  })
-  position: any;
-  @Prop({ default: 5 }) time: number;
-  @Prop({ default: true }) show: boolean;
-
-  styles: any = {
-    position: this.positionType,
-    ...this.position
-  };
-
-  isMounted: boolean = false;
-
+<script>
+export default {
+  name: "toast",
+  props: {
+    positionType: {
+      default: "absolute"
+    },
+    position: {
+      default: () => ({
+        top: "0",
+        left: "0"
+      })
+    },
+    time: {
+      type: Number,
+      default: 5
+    },
+    show: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    return {
+      styles: {
+        position: this.positionType,
+        ...this.position
+      },
+      isMounted: false
+    };
+  },
   mounted() {
     this.isMounted = true;
   }
-}
+};
 </script>
 
 <style lang="scss">
