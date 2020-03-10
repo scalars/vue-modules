@@ -1,16 +1,26 @@
 <template>
   <nav @mouseleave="setCurrentItem">
     <ul>
-      <MarkerItem :widthItem="widthItem" :markerPosition="markerPosition" :primary="primary"/>
-      <li v-for="(link, index) in links"
-          :key="index"
-          :style="{ width: widthItem+'px' }"
-          @mouseout="setCurrentItem()"
-          @mouseover="onHover($event)">
+      <MarkerItem
+        :widthItem="widthItem"
+        :markerPosition="markerPosition"
+        :primary="primary"
+      />
+      <li
+        v-for="(link, index) in links"
+        :key="index"
+        :style="{ width: widthItem + 'px' }"
+        @mouseout="setCurrentItem()"
+        @mouseover="onHover($event)"
+      >
         <a v-if="link.url" :href="link.url" class="link" :target="link.target">
           {{ link.name }}
         </a>
-        <a v-else-if="link.id" v-scroll-to="{ el: link.id, offset: -80 }" class="link">
+        <a
+          v-else-if="link.id"
+          v-scroll-to="{ el: link.id, offset: -80 }"
+          class="link"
+        >
           {{ link.name }}
         </a>
       </li>
@@ -19,8 +29,8 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import VueScrollTo from 'vue-scrollto';
+import Vue from "vue";
+import VueScrollTo from "vue-scrollto";
 Vue.use(VueScrollTo);
 import MarkerItem from "./Marker";
 export default {
@@ -37,7 +47,7 @@ export default {
   data() {
     return {
       markerPosition: "0px"
-    }
+    };
   },
   mounted() {
     this.setCurrentItem();
