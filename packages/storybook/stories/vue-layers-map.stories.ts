@@ -3,7 +3,7 @@ import Vue from 'vue';
 //@ts-ignore
 import VueLayers from "vuelayers";
 // @ts-ignore
-import {VueLayersMap} from "../../components/vue-layers-map/src/VueLayersMap";
+import VueLayersMap from "../../components/vue-layers-map/src/VueLayersMap";
 import "vuelayers/lib/style.css"; // needs css-loader
 
 Vue.use(VueLayers);
