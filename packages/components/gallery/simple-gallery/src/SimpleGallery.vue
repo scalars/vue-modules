@@ -4,8 +4,8 @@
              v-touch:swipe.left="next"
              v-touch:swipe.right="prev"
         >
-            <div class="control left" @click="prev"><slot name="left-icon"><</slot></div>
-            <div class="control right" @click="next"><slot name="right-icon">></slot></div>
+            <div class="control left" @click="prev"><slot name="left-icon">&lt;</slot></div>
+            <div class="control right" @click="next"><slot name="right-icon">&gt;</slot></div>
         </div>
         <div class="carousel" :style="{left: `${offsetLeft}px`}">
             <div
