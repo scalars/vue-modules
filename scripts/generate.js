@@ -67,40 +67,43 @@ const generateStory = (storyTemplate, folderStorybook, folderProject, component,
     fs.writeFileSync(path.resolve(folderStorybook, `${names.kebab_component_name}.stories.ts`), renderedTemplate);
 };
 
-// VARIABLES
-
-const COMPONENTS_PATH = path.resolve(__dirname, '..', 'packages/components');
-const STORIES_PATH = path.resolve(__dirname, '..', 'packages/storybook/stories');
-
-const componentName = program.component;
-const component = getPathAndComponentName(componentName);
-const names = getNames(component.name);
-
-const resourcesPath = path.resolve(__dirname, 'resources');
-const pathMustacheFiles = path.resolve(resourcesPath, 'mustache');
-const pathTemplateFiles = path.resolve(resourcesPath, 'template');
-const storyTemplate = path.resolve(pathMustacheFiles, 'component.stories.mst');
-const mustacheFiles = [
-    {
-        path: path.resolve(pathMustacheFiles, 'component.mst'),
-        copyPath: `src/${names.component_name}.vue`
-    },
-    {
-        path: path.resolve(pathMustacheFiles, 'main.mst'),
-        copyPath: `src/main.js`
-    },
-    {
-        path: path.resolve(pathMustacheFiles, 'package.mst'),
-        copyPath: 'package.json'
-    },
-    {
-        path: path.resolve(pathMustacheFiles, 'index.d.mst'),
-        copyPath: 'index.d.ts'
-    }
-];
-
-const mustacheRenderedFiles = getRendersMustache(mustacheFiles, names);
 try {
+    const COMPONENTS_PATH = path.resolve(__dirname, '..', 'packages/components');
+    const STORIES_PATH = path.resolve(__dirname, '..', 'packages/storybook/stories');
+
+    const componentName = program.component;
+    const component = getPathAndComponentName(componentName);
+    if (!component.name.match(/^[a-zA-Z]+$/)) {
+        console.error('The component name must use camelcase syntax');
+        process.exit(1);
+    }
+    const names = getNames(component.name);
+
+    const resourcesPath = path.resolve(__dirname, 'resources');
+    const pathMustacheFiles = path.resolve(resourcesPath, 'mustache');
+    const pathTemplateFiles = path.resolve(resourcesPath, 'template');
+    const storyTemplate = path.resolve(pathMustacheFiles, 'component.stories.mst');
+    const mustacheFiles = [
+        {
+            path: path.resolve(pathMustacheFiles, 'component.mst'),
+            copyPath: `src/${names.component_name}.vue`
+        },
+        {
+            path: path.resolve(pathMustacheFiles, 'main.mst'),
+            copyPath: `src/main.js`
+        },
+        {
+            path: path.resolve(pathMustacheFiles, 'package.mst'),
+            copyPath: 'package.json'
+        },
+        {
+            path: path.resolve(pathMustacheFiles, 'index.d.mst'),
+            copyPath: 'index.d.ts'
+        }
+    ];
+
+    const mustacheRenderedFiles = getRendersMustache(mustacheFiles, names);
+
     const projectPath = path.resolve(COMPONENTS_PATH, component.path);
     generateProject(projectPath, names.kebab_component_name, pathTemplateFiles, mustacheRenderedFiles);
     const storyPath = path.resolve(STORIES_PATH, component.path);
