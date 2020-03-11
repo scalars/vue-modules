@@ -125,6 +125,11 @@ export default {
             justify-content: center;
             flex: 1 1 auto;
             overflow: hidden;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
 
             .image {
                 min-height: 100%;
