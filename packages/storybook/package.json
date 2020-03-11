@@ -9,6 +9,7 @@
   "dependencies": {
     "@vuemodules/headersimple": "^1.0.0",
     "@vuemodules/horizontal-card": "^1.0.0",
+    "@vuemodules/simple-gallery": "^0.1.1",
     "@vuemodules/vuelayersmap": "^0.0.3",
     "core-js": "^3.4.4",
     "vue": "^2.6.11",

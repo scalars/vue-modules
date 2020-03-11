@@ -1,0 +1,45 @@
+{
+  "name": "@vuemodules/simple-card",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve --public dev dev/server.js",
+    "build": "vue-cli-service build --target lib --filename index src/main.js",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "prepare": "vue-cli-service lint && vue-cli-service build --dest lib --target lib --filename index src/main.js"
+  },
+  "main": "lib/index.common.js",
+  "types": "index.d.ts",
+  "files": [
+    "lib/*",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-styled-components": "^1.4.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-unit-jest": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "css-loader": "^3.4.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
