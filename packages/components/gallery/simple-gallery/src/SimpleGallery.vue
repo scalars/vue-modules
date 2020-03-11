@@ -97,11 +97,17 @@ export default {
         left: 0;
         z-index: 1;
 
+        &:hover .control {
+            opacity: 1;
+        }
+
         .control {
             padding: 15px;
             color: #fff;
+            opacity: 0;
             text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
             cursor: pointer;
+            transition: opacity 200ms ease-in-out;
         }
     }
 
