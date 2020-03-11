@@ -1,20 +1,20 @@
 import styled from "vue-styled-components";
 const MarkerProps = {
-  widthItem: Number,
-  markerPosition: String,
-  primary: String
+    widthItem: Number,
+    markerPosition: String,
+    primary: String
 };
 
 const getPrimaryColor = props => {
-  return props.primary;
+    return props.primary;
 };
 
 const getWidth = props => {
-  return props.widthItem + "px";
+    return props.widthItem + "px";
 };
 
 const getPosition = props => {
-  return props.markerPosition;
+    return props.markerPosition;
 };
 
 const MarkerItem = styled("div", MarkerProps)`

@@ -2,15 +2,15 @@ import styled from "vue-styled-components";
 const HeaderProps = { primary: String, height: String, fixed: Boolean };
 
 const getPrimaryColor = props => {
-  return props.primary;
+    return props.primary;
 };
 
 const getHeight = props => {
-  return props.height;
+    return props.height;
 };
 
 const getPosition = props => {
-  return props.fixed ? "fixed" : "relative";
+    return props.fixed ? "fixed" : "relative";
 };
 
 const Header = styled("div", HeaderProps)`

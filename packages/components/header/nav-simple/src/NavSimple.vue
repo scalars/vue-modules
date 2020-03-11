@@ -34,38 +34,38 @@ import VueScrollTo from "vue-scrollto";
 Vue.use(VueScrollTo);
 import MarkerItem from "./Marker";
 export default {
-  name: "nav-simple",
-  props: {
-    links: { type: Array, required: true },
-    widthItem: { type: Number, default: 130 },
-    fixed: { type: Boolean, default: false },
-    primary: { type: String, default: "orange" }
-  },
-  components: {
-    MarkerItem
-  },
-  data() {
-    return {
-      markerPosition: "0px"
-    };
-  },
-  mounted() {
-    this.setCurrentItem();
-  },
-  methods: {
-    onHover(event) {
-      const offsetParent = event.srcElement.parentNode.parentNode.offsetLeft;
-      const offsetElement = event.srcElement.offsetLeft;
-      this.markerPosition = offsetElement - offsetParent + "px";
+    name: "nav-simple",
+    props: {
+        links: { type: Array, required: true },
+        widthItem: { type: Number, default: 130 },
+        fixed: { type: Boolean, default: false },
+        primary: { type: String, default: "orange" }
     },
-    setCurrentItem() {
-      this.links.forEach((link, index) => {
-        if (link.isActive) {
-          this.markerPosition = index * this.widthItem + "px";
+    components: {
+        MarkerItem
+    },
+    data() {
+        return {
+            markerPosition: "0px"
+        };
+    },
+    mounted() {
+        this.setCurrentItem();
+    },
+    methods: {
+        onHover(event) {
+            const offsetParent = event.srcElement.parentNode.parentNode.offsetLeft;
+            const offsetElement = event.srcElement.offsetLeft;
+            this.markerPosition = offsetElement - offsetParent + "px";
+        },
+        setCurrentItem() {
+            this.links.forEach((link, index) => {
+                if (link.isActive) {
+                    this.markerPosition = index * this.widthItem + "px";
+                }
+            });
         }
-      });
     }
-  }
 };
 </script>
 

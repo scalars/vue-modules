@@ -41,28 +41,28 @@
 </template>
 <script>
 export default {
-  name: "vue-layers-map",
-  props: {
-    zoom: { type: Number, default: 18 },
-    center: {
-      default: function() {
-        return [-77.28513, 1.21946];
-      }
-    },
-    rotation: { type: Number, default: 0 },
-    geolocPosition: { default: undefined },
-    marker: {
-      default: function() {
-        return {
-          position: [-77.28513, 1.21946],
-          width: 30,
-          height: 30,
-          color: "red",
-          url:
+    name: "vue-layers-map",
+    props: {
+        zoom: { type: Number, default: 18 },
+        center: {
+            default: function() {
+                return [-77.28513, 1.21946];
+            }
+        },
+        rotation: { type: Number, default: 0 },
+        geolocPosition: { default: undefined },
+        marker: {
+            default: function() {
+                return {
+                    position: [-77.28513, 1.21946],
+                    width: 30,
+                    height: 30,
+                    color: "red",
+                    url:
             "https://cdn.pixabay.com/photo/2014/04/03/10/03/google-309740_960_720.png"
-        };
-      }
+                };
+            }
+        }
     }
-  }
 };
 </script>

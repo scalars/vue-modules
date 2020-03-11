@@ -40,31 +40,31 @@ import MenuIcon from "./MenuIcon";
 import Header from "./Header";
 
 export default {
-  name: "header-simple",
-  props: {
-    height: { type: String, default: "60px" },
-    fixed: { type: Boolean, default: false },
-    icon: { type: String, default: null },
-    primary: { type: String, default: "orange" }
-  },
-  components: {
-    Icon,
-    MenuIcon,
-    Header
-  },
-  data() {
-    return {
-      openMenu: false
-    };
-  },
-  methods: {
-    toggleMenu: function() {
-      this.openMenu = !this.openMenu;
+    name: "header-simple",
+    props: {
+        height: { type: String, default: "60px" },
+        fixed: { type: Boolean, default: false },
+        icon: { type: String, default: null },
+        primary: { type: String, default: "orange" }
+    },
+    components: {
+        Icon,
+        MenuIcon,
+        Header
+    },
+    data() {
+        return {
+            openMenu: false
+        };
+    },
+    methods: {
+        toggleMenu: function() {
+            this.openMenu = !this.openMenu;
+        }
+    },
+    mounted() {
+        this.$classes;
     }
-  },
-  mounted() {
-    this.$classes;
-  }
 };
 </script>
 

@@ -17,15 +17,15 @@
 
 <script>
 export default {
-  name: "item-card",
-  props: {
-    title: { required: true, type: String },
-    description: { required: true, type: String },
-    redirect: { required: true, type: String },
-    image: { required: true, type: String },
-    readMoreLabel: { default: "Ver mas", type: String },
-    alt: { default: false, type: Boolean }
-  }
+    name: "item-card",
+    props: {
+        title: { required: true, type: String },
+        description: { required: true, type: String },
+        redirect: { required: true, type: String },
+        image: { required: true, type: String },
+        readMoreLabel: { default: "Ver mas", type: String },
+        alt: { default: false, type: Boolean }
+    }
 };
 </script>
 

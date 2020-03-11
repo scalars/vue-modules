@@ -3,7 +3,7 @@ import styled from "vue-styled-components";
 const MenuIconProps = { primary: String };
 
 const getPrimaryColor = props => {
-  return props.primary;
+    return props.primary;
 };
 
 const MenuIcon = styled("span", MenuIconProps)`

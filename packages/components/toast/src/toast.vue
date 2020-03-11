@@ -10,38 +10,38 @@
 
 <script>
 export default {
-  name: "toast",
-  props: {
-    positionType: {
-      default: "absolute"
+    name: "toast",
+    props: {
+        positionType: {
+            default: "absolute"
+        },
+        position: {
+            default: () => ({
+                top: "0",
+                left: "0"
+            })
+        },
+        time: {
+            type: Number,
+            default: 5
+        },
+        show: {
+            type: Boolean,
+            default: true
+        }
     },
-    position: {
-      default: () => ({
-        top: "0",
-        left: "0"
-      })
+    data() {
+        return {
+            styles: {
+                position: this.positionType,
+                ...this.position
+            },
+            isMounted: false
+        };
     },
-    time: {
-      type: Number,
-      default: 5
-    },
-    show: {
-      type: Boolean,
-      default: true
+    mounted() {
+        this.isMounted = true;
     }
-  },
-  data() {
-    return {
-      styles: {
-        position: this.positionType,
-        ...this.position
-      },
-      isMounted: false
-    };
-  },
-  mounted() {
-    this.isMounted = true;
-  }
 };
 </script>
 
