@@ -3,7 +3,8 @@ module.exports = {
   addons: [
     '@storybook/addon-knobs/register',
     '@storybook/addon-actions',
-    '@storybook/addon-links'
+    '@storybook/addon-links',
+    '@storybook/addon-viewport/register'
   ],
   configureWebpack: {
     externals: {
