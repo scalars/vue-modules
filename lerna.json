@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/**/*"
+    "packages/components/**/*",
+    "packages/storybook"
   ],
   "version": "independent"
 }
