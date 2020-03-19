@@ -49,10 +49,10 @@ export default {
         }
     },
     computed: {
-        isJoined:  function () {
+        isJoined () {
             return this.themes[this.theme] ? this.themes[this.theme].joined : false;
         },
-        themeConfig: function () {
+        themeConfig () {
             return {
                 backgroundColor: this.isJoined ? (!this.disabled ? this.background : '#fafafa') : 'transparent',
                 fontColor: this.fontColor,
@@ -61,7 +61,7 @@ export default {
                 borderRadius: this.isJoined ? this.borderRadius : '0'
             };
         },
-        inputConfig: function () {
+        inputConfig () {
             return {
                 lineHeight: this.height,
                 padding: this.padding,
@@ -70,7 +70,7 @@ export default {
                 backgroundColor: !this.isJoined ? (!this.disabled ? this.background : '#fafafa') : 'transparent',
             };
         },
-        iconConfig: function () {
+        iconConfig () {
             return {
                 height: this.height,
                 width: this.height,
