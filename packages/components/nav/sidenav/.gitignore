@@ -1,12 +1,7 @@
-node_modules
-.idea
-yarn.lock
-package-lock.json
-
 .DS_Store
 node_modules
-dist
-lib
+/dist
+/lib
 
 # local env files
 .env.local
@@ -25,5 +20,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-
-storybook-static
