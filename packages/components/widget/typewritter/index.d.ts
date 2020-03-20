@@ -1,1 +1,1 @@
-declare module '@vuemodules/typewritter'
+declare module '@vuemodules/typewriter'
