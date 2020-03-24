@@ -11,7 +11,7 @@
     "@vuemodules/horizontal-card": "^1.0.0",
     "@vuemodules/simple-gallery": "^0.1.1",
     "@vuemodules/vuelayersmap": "^0.0.3",
-    "core-js": "^3.4.4",
+    "core-js": "^2.6.5",
     "vue": "^2.6.11",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/runtime-corejs2": "^7.8.4",
+    "@babel/runtime-corejs3": "^7.9.2",
     "@storybook/addon-actions": "^6.0.0-alpha.26",
     "@storybook/addon-docs": "^6.0.0-alpha.26",
     "@storybook/addon-knobs": "^6.0.0-alpha.26",
