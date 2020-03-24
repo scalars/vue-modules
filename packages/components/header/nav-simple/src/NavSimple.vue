@@ -12,6 +12,7 @@
         :style="{ width: widthItem + 'px' }"
         @mouseout="setCurrentItem()"
         @mouseover="onHover($event)"
+        @click="$emit('click', link)"
       >
         <a v-if="link.url" :href="link.url" class="link" :target="link.target">
           {{ link.name }}
