@@ -9,7 +9,7 @@
             <slot name="header"></slot>
         </custom-label>
         <slot name="background"></slot>
-        <custom-label class="footer" :background="primary">
+        <custom-label class="footer" :class="{visible: footerVisible}" :background="primary">
             <slot name="footer"></slot>
         </custom-label>
     </card>
@@ -29,7 +29,8 @@ export default {
         primary: { type: String, default: '#ddd' },
         background: { type: String, default: '#ddd' },
         width: { type: String, default: '450px' },
-        height: { type: String, default: '350px' }
+        height: { type: String, default: '350px' },
+        footerVisible: { type: Boolean, default: false }
     }
 };
 </script>
@@ -60,6 +61,10 @@ export default {
     .footer {
         opacity: 0;
         bottom: 0;
+
+        &.visible {
+            opacity: 1;
+        }
     }
 }
 </style>
