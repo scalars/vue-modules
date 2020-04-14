@@ -10,6 +10,8 @@ const ItemContent = styled('div', props)`
     
     @media screen and (max-width: 991px) {
         height: auto;
+        width: 100%;
+        margin-left: 0;
     }
 `;
 

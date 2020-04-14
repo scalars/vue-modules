@@ -11,9 +11,12 @@
     >
         <div
             class="overlap"
-            :style="{backgroundColor: active ? overlapActiveColor : overlapInactiveColor}"
+            :style="{
+                '--active-color': overlapActiveColor,
+                backgroundColor: active ? overlapActiveColor : overlapInactiveColor
+            }"
         />
-        <div class="content" :class="{hidden: !active}">
+        <div class="content" :class="{'item-hidden': !active}">
             <item-content :margin="clipSize">
                 <slot></slot>
             </item-content>
@@ -50,6 +53,10 @@ export default {
     width: 100%;
     height: 100%;
     transition: all 200ms ease-in-out;
+
+    @media screen and (max-width: 991px) {
+        background-color: var(--active-color) !important;
+    }
 }
 
 .item {
@@ -69,7 +76,7 @@ export default {
     transition: opacity 200ms ease-in-out;
     height: 100%;
     z-index: 2;
-    &.hidden {
+    &.item-hidden {
         opacity: 0;
 
         @media screen and (max-width: 991px) {
