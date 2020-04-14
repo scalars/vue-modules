@@ -21,25 +21,25 @@ export const Default = () => ({
         return {
             items: [
                 {
-                    img: "https://dev.rutasurenas.com/static/img/7ed7474.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/04/12/10/37/sunset-5033708_960_720.jpg"
                 },
                 {
-                    img: "https://dev.rutasurenas.com/static/img/fa61797.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/03/01/06/39/climbing-rose-4891820_960_720.jpg"
                 },
                 {
-                    img: "https://dev.rutasurenas.com/static/img/24e3369.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/04/09/19/27/cherry-blossom-5022811_960_720.jpg"
                 },
                 {
-                    img: "https://dev.rutasurenas.com/static/img/7ed7474.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/04/09/14/32/japan-5021733_960_720.jpg"
                 },
                 {
-                    img: "https://dev.rutasurenas.com/static/img/fa61797.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/04/10/16/19/landscape-5026558_960_720.jpg"
                 },
                 {
-                    img: "https://dev.rutasurenas.com/static/img/24e3369.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/04/12/14/44/fantasy-5034448_960_720.jpg"
                 },
                 {
-                    img: "https://dev.rutasurenas.com/static/img/382f574.jpeg"
+                    img: "https://cdn.pixabay.com/photo/2020/03/28/15/20/cat-4977436_960_720.jpg"
                 }
             ],
             active: 0
