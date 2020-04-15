@@ -60,23 +60,29 @@ export default {
 }
 
 .item {
-    &.hover:hover {
-        filter: brightness(1.2);
+    @media screen and (min-width: 992px) {
+        &.hover:hover {
+            filter: brightness(1.2);
+        }
     }
 
     &:first-child {
         margin-left: 0;
         clip-path: none;
 
-        .item-content {
-            margin-left: 0;
-            width: calc(100% - var(--margin));
+        @media screen and (min-width: 992px) {
+            .item-content {
+                margin-left: 0;
+                width: calc(100% - var(--margin));
+            }
         }
     }
 
-    &:last-child .item-content {
-        margin-left: var(--margin);
-        margin-right: 0;
+    @media screen and (min-width: 992px) {
+        &:last-child .item-content {
+            margin-left: var(--margin);
+            margin-right: 0;
+        }
     }
 }
 
