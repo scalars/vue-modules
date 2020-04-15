@@ -17,7 +17,7 @@
             }"
         />
         <div class="content" :class="{'item-hidden': !active}">
-            <item-content :margin="clipSize">
+            <item-content :margin="clipSize" class="item-content" :style="{'--margin': clipSize}">
                 <slot></slot>
             </item-content>
         </div>
@@ -67,6 +67,16 @@ export default {
     &:first-child {
         margin-left: 0;
         clip-path: none;
+
+        .item-content {
+            margin-left: 0;
+            width: calc(100% - var(--margin));
+        }
+    }
+
+    &:last-child .item-content {
+        margin-left: var(--margin);
+        margin-right: 0;
     }
 }
 
