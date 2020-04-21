@@ -5,6 +5,7 @@
             :footer-visible="true"
             :style="{fontSize: fontSize, borderRadius, width, height}"
             class="card001-container"
+            @click="$emit('click')"
     >
         <div slot="background" class="background" :style="{backgroundImage: `url(${img})`}"/>
         <div slot="footer" :style="{padding, color}">
