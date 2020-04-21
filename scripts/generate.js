@@ -73,7 +73,7 @@ try {
 
     const componentName = program.component;
     const component = getPathAndComponentName(componentName);
-    if (!component.name.match(/^[a-zA-Z]+$/)) {
+    if (!component.name.match(/^[a-zA-Z0-9]+$/)) {
         console.error('The component name must use camelcase syntax');
         process.exit(1);
     }
