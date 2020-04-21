@@ -1,6 +1,6 @@
 {
-  "name": "@vuemodules/simple-card",
-  "version": "0.1.2",
+  "name": "@vuemodules/category-button",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve --public dev dev/server.js",

@@ -1,6 +1,6 @@
 {
-  "name": "@vuemodules/simple-card",
-  "version": "0.1.2",
+  "name": "@vuemodules/card001",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve --public dev dev/server.js",
@@ -16,6 +16,7 @@
     "index.d.ts"
   ],
   "dependencies": {
+    "@vuemodules/simple-card": "^0.1.2",
     "vue": "^2.6.11",
     "vue-styled-components": "^1.4.14"
   },
