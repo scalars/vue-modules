@@ -5,7 +5,7 @@
         :height="height"
         class="card-container"
     >
-        <custom-label class="header" :background="primary">
+        <custom-label class="header" :background="primary" :class="{visible: headerVisible}">
             <slot name="header"></slot>
         </custom-label>
         <slot name="background"></slot>
@@ -30,7 +30,8 @@ export default {
         background: { type: String, default: '#ddd' },
         width: { type: String, default: '450px' },
         height: { type: String, default: '350px' },
-        footerVisible: { type: Boolean, default: false }
+        footerVisible: { type: Boolean, default: false },
+        headerVisible: { type: Boolean, default: true }
     }
 };
 </script>
@@ -40,7 +41,7 @@ export default {
     position: relative;
 
     &:hover {
-        .footer {
+        .footer, .header {
             opacity: 1;
         }
     }
@@ -56,6 +57,12 @@ export default {
 
     .header {
         top: 0;
+        opacity: 0;
+        transition: opacity 200ms ease-in-out;
+
+        &.visible {
+            opacity: 1;
+        }
     }
 
     .footer {
