@@ -1,18 +1,21 @@
 <template>
-    <simple-card
-            :primary="backgroundFooter"
-            background="#eee"
-            :footer-visible="true"
-            :style="{fontSize: fontSize, borderRadius, width, height}"
-            class="card001-container"
-            @click="$emit('click')"
-    >
-        <div slot="background" class="background" :style="{backgroundImage: `url(${img})`}"/>
-        <div slot="footer" :style="{padding, color}">
-            <h3 class="title" v-html="title" />
-            <span class="subtitle" v-html="subtitle" />
-        </div>
-    </simple-card>
+    <div class="card001-container" :style="{borderRadius, width, height}">
+        <simple-card
+                :primary="backgroundFooter"
+                background="#eee"
+                :footer-visible="true"
+                :footer-overlaped="false"
+                :style="{fontSize: fontSize}"
+                class="simple-card"
+                @click="$emit('click')"
+        >
+            <div slot="background" class="background" :style="{backgroundImage: `url(${img})`}"/>
+            <div slot="footer" :style="{padding, color}">
+                <h3 class="title" v-html="title" />
+                <span class="subtitle" v-html="subtitle" />
+            </div>
+        </simple-card>
+    </div>
 </template>
 
 <script>
@@ -43,11 +46,19 @@ export default {
     overflow: hidden;
 }
 
-.background {
+.simple-card {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.background {
+    width: 100%;
+    height: auto;
     background-position: center;
     background-size: cover;
+    flex: 1 1 auto;
 }
 
 .title {
