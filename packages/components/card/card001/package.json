@@ -1,6 +1,6 @@
 {
   "name": "@vuemodules/card001",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve --public dev dev/server.js",
