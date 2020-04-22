@@ -9,7 +9,7 @@
             <slot name="header"></slot>
         </custom-label>
         <slot name="background"></slot>
-        <custom-label class="footer" :class="{visible: footerVisible}" :background="primary">
+        <custom-label class="footer" :class="{visible: footerVisible}" :background="primary" :style="{position: footerOverlaped ? 'absolute' : 'relative' }">
             <slot name="footer"></slot>
         </custom-label>
     </card>
@@ -31,7 +31,8 @@ export default {
         width: { type: String, default: '450px' },
         height: { type: String, default: '350px' },
         footerVisible: { type: Boolean, default: false },
-        headerVisible: { type: Boolean, default: true }
+        headerVisible: { type: Boolean, default: true },
+        footerOverlaped: { type: Boolean, default: true }
     }
 };
 </script>
@@ -47,7 +48,6 @@ export default {
     }
 
     .header, .footer {
-        position: absolute;;
         left: 0;
         width: 100%;
         height: auto;
