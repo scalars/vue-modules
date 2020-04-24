@@ -33,7 +33,8 @@ export default {
         borderRadiusButton: { type: String, default: '0' },
         height: { type: String, default: '30px' },
         padding: { type: String, default: '3px 15px'},
-        border: { type: String, default: '1px solid rgba(0, 0, 0, 0.3)'}
+        border: { type: String, default: '1px solid rgba(0, 0, 0, 0.3)'},
+        init: { type: String, default: '' }
     },
     data() {
         return {
@@ -81,6 +82,9 @@ export default {
                 marginLeft: !this.isJoined ? '5px' : '0'
             };
         }
+    },
+    mounted () {
+        this.value = this.init;
     }
 };
 </script>
