@@ -1,5 +1,5 @@
 <template>
-    <div class="card001-container" :style="{borderRadius, width, height}">
+    <div class="card001-container" :style="{borderRadius, width, height}" @click="$emit('click')">
         <simple-card
                 :primary="backgroundFooter"
                 background="#eee"
@@ -7,7 +7,6 @@
                 :footer-overlaped="false"
                 :style="{fontSize: fontSize}"
                 class="simple-card"
-                @click="$emit('click')"
         >
             <div slot="background" class="background" :style="{backgroundImage: `url(${img})`}"/>
             <div slot="footer" :style="{padding, color}">

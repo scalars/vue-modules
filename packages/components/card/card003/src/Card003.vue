@@ -1,8 +1,8 @@
 <template>
-    <div class="card003-container" :style="{borderRadius, width, height}">
+    <div class="card003-container" :style="{borderRadius, width, height}" @click="$emit('click')">
         <div class="close-button"
              :style="{backgroundColor:closeButtonColor, fontSize: closeButtonFontSize}"
-             @click="$emit('onClose')"
+             @click.stop="$emit('onClose')"
         >
             <slot name="close-button">X</slot>
         </div>
@@ -13,7 +13,6 @@
                 :footer-overlaped="false"
                 :style="{fontSize: fontSize}"
                 class="simple-card"
-                @click="$emit('click')"
         >
             <div slot="background" class="background" :style="{backgroundImage: `url(${img})`}"/>
             <div slot="footer" :style="{padding, color}">
