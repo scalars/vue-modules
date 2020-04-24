@@ -36,6 +36,11 @@ export default {
         border: { type: String, default: '1px solid rgba(0, 0, 0, 0.3)'},
         init: { type: String, default: '' }
     },
+    watch: {
+        init( value ) {
+            this.value = value;
+        }
+    },
     data() {
         return {
             value: '',
