@@ -24,7 +24,7 @@
                             class="input"
                             type="number" min="0" v-model="quantity"
                             :style="{backgroundColor: accent, borderRadius}"
-                            @change="$emit('change')"
+                            @change="$emit('change', quantity)"
                     >
                 </div>
                 <div class="total"><span>Total:</span> ${{ total }}</div>
