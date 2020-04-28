@@ -12,14 +12,14 @@
             <div slot="footer" :style="{padding, color}">
                 <h3 class="title" v-html="title" :style="{ color: titleColor }"/>
                 <div class="options">
-                    <div class="arrow" :style="{color: accent}" @click="setCurrent(current - 1)">
+                    <div class="arrow" :style="{color: accent}" @click.stop="setCurrent(current - 1)">
                         <slot name="left-arrow">&#60;</slot>
                     </div>
                     <div v-for="(option, index) of options" :key="index" class="option" :class="{active: index === current}">
                         <span class="price">{{ option.price }}</span>
                         <span class="label" :style="{color: accent}">{{ option.label }}</span>
                     </div>
-                    <div class="arrow" :style="{color: accent}" @click="setCurrent(current + 1)">
+                    <div class="arrow" :style="{color: accent}" @click.stop="setCurrent(current + 1)">
                         <slot name="right-arrow">&#62;</slot>
                     </div>
                 </div>

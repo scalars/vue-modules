@@ -22,12 +22,12 @@
                     <span class="presentation" :style="{color: accent}">{{item.presentation}}</span>
                     <input
                             class="input"
-                            type="number" min="0" v-model="item.quantity"
+                            type="number" min="0" v-model="quantity"
                             :style="{backgroundColor: accent, borderRadius}"
                             @change="$emit('change')"
                     >
                 </div>
-                <div class="total"><span>Total:</span> ${{ item.price * item.quantity }}</div>
+                <div class="total"><span>Total:</span> ${{ total }}</div>
             </div>
         </simple-card>
     </div>
@@ -55,6 +55,19 @@ export default {
         accent: { default: 'orange' },
         closeButtonColor: { default: 'red' },
         closeButtonFontSize: { default: '0.9em' }
+    },
+    mounted () {
+        this.quantity = this.item.quantity;
+    },
+    data() {
+        return {
+            quantity: 0
+        };
+    },
+    computed: {
+        total () {
+            return this.quantity * this.item.price;
+        }
     }
 };
 </script>
