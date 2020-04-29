@@ -7,6 +7,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@vuemodules/card001": "^0.0.3",
     "@vuemodules/headersimple": "^1.0.0",
     "@vuemodules/horizontal-card": "^1.0.0",
     "@vuemodules/simple-gallery": "^0.1.1",
