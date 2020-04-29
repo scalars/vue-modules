@@ -1,5 +1,5 @@
 <template>
-    <gallery :width="width" :height="height" ref="vm_galleryContainer" class="gallery-container">
+    <gallery :width="width" :height="height" class="gallery-container">
         <div class="controls"
              v-touch:swipe.left="next"
              v-touch:swipe.right="prev"
@@ -7,15 +7,20 @@
             <div class="control left" @click="prev"><slot name="left-icon">&lt;</slot></div>
             <div class="control right" @click="next"><slot name="right-icon">&gt;</slot></div>
         </div>
-        <div class="carousel" :style="{left: `${offsetLeft}px`}">
+        <div class="carousel" :style="{
+            left: `-${activeItem * 100}%`,
+            width: `calc( 100% * ${images.length} )`
+        }">
             <div
                 v-for="(image, index) of images"
                 :key="`${image}-${index}`"
                 class="wrapper"
-                :style="{'min-width': `${containerWidth}px`, 'max-width': `${containerWidth}px`, 'min-height': height, 'max-height': height}"
-            >
-                <img class="image" :src="image" alt="">
-            </div>
+                :style="{
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${image})`
+                }"
+            />
         </div>
     </gallery>
 </template>
@@ -40,27 +45,8 @@ export default {
     },
     data() {
         return {
-            activeItem: 0,
-            containerWidth: 0,
-            container: null,
-            offsetLeft: 0,
+            activeItem: 0
         }
-    },
-    watch: {
-        width() {
-            this.$nextTick().then(() => {
-                this.containerWidth = this.$refs.vm_galleryContainer.$el.clientWidth;
-                this.offsetLeft = -this.activeItem * this.containerWidth;
-            });
-        },
-        activeItem() {
-            this.offsetLeft = -this.activeItem * this.containerWidth;
-        }
-    },
-    mounted() {
-        this.$nextTick().then(() => {
-            this.containerWidth = this.$refs.vm_galleryContainer.$el.clientWidth;
-        });
     },
     methods: {
         setActive(active) {
@@ -130,11 +116,8 @@ export default {
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-
-            .image {
-                min-height: 100%;
-                max-height: 100%;
-            }
+            background-size: cover;
+            background-position: center;
         }
     }
 }
