@@ -29,10 +29,6 @@ export default {
     mounted () {
         this.$slots.default.forEach( ( item, index ) => {
             item.elm.classList.add('card-item');
-            item.onclick = () => {
-                console.log('clicked');
-                this.current = index;
-            };
         } );
         this.$slots.default[this.current].elm.classList.add( 'active' );
     },
