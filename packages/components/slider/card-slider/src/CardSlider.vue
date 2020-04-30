@@ -4,7 +4,14 @@
         v-touch:swipe.left="next"
         v-touch:swipe.right="prev"
     >
-        <div class="wrapper" :style="{'--cardWidth': cardWidth, transform: `translateX( calc( ( ${cardWidth} + 20px ) * -${current} - ${cardWidth} / 2 ) )` }">
+        <div
+            class="wrapper"
+            :style="{
+                '--cardWidth': cardWidth,
+                transform: `translateX( calc( ( ${cardWidth} + 20px ) * -${current} - ${cardWidth} / 2 ) )`,
+                left: `calc( ${cardWidth} / 2 + 20px )`
+            }"
+        >
             <slot />
         </div>
     </div>
@@ -63,6 +70,7 @@ export default {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow: hidden;
 
     .wrapper {
         position: relative;
@@ -70,7 +78,6 @@ export default {
         height: 100%;
         display: flex;
         transition: all 200ms ease-in-out;
-        left: 50%;
 
         & > .card-item {
             margin-left: 20px;
