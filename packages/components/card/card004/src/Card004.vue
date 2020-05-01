@@ -1,5 +1,5 @@
 <template>
-    <div class="card004-container" :style="{width, height, borderRadius}">
+    <div class="card004-container" :style="{width, height, borderRadius}" @click="$emit('click')">
         <simple-card
             :primary="backgroundFooter"
             background="#eee"
@@ -10,38 +10,42 @@
         >
             <div slot="background" class="background" :style="{backgroundImage: `url(${img})`}"/>
             <div slot="footer" :style="{padding, color}">
-                <div class="options">
+                <div class="title-wrapper" v-if="item.title">
                     <h3 class="title" v-html="item.title" :style="{ color: accent }"/>
                 </div>
-                <div class="options2">
-                    <span class="price">${{item.price}}</span>
-                    <span class="description" :style="{color: accent}">{{item.description}}</span>
+                <div v-if="item.price || item.description" class="options">
+                    <span class="price" v-if="item.price">${{item.price}}</span>
+                    <span class="description" :style="{color: accent}" v-if="item.description">
+                        {{item.description}}
+                    </span>
                 </div>
-                <div class="buttons" :style="{color: titleColor}">
-                    <div class="total"  
-                        :style="{backgroundColor: accent, borderRadius, color: titleColor}" 
-                        v-if="icon && !icon2"
-                        v-html="icon"
+                <div class="buttons" :style="{color: titleColor}" v-if="textPrimaryButton || textSecondaryButton">
+                    <div
+                        class="button"
+                        v-if="textSecondaryButton"
+                        :style="{
+                            borderRadius,
+                            marginRight: textPrimaryButton ? '5px' : '',
+                            ...styleSecondaryButton
+                        }"
+                        v-html="textSecondaryButton"
+                        @click.stop="$emit('clickSecondary')"
                     />
-                    <div class=" total"  
-                        :style="{backgroundColor: accent, borderRadius, color: titleColor}"
-                        v-if="!icon && icon2"
-                        v-html="icon2"
-                    />
-                    <div class="button"  
-                        :style="{backgroundColor: accent, borderRadius, color: titleColor}" 
-                        v-if="icon && icon2"
-                        v-html="icon"
-                    />
-                    <div class="button"  
-                        :style="{backgroundColor: accent, borderRadius, color: titleColor}" 
-                        v-if="icon && icon2"
-                        v-html="icon2"
+                    <div
+                        class="button"
+                        v-if="textPrimaryButton"
+                        :style="{
+                            borderRadius,
+                            marginLeft: textSecondaryButton ? '5px' : '',
+                            ...stylePrimaryButton
+                        }"
+                        v-html="textPrimaryButton"
+                        @click.stop="$emit('clickPrimary')"
                     />
                 </div>
-                <div><span class="place">{{item.restaurant}}</span></div>
+                <div v-if="item.restaurant" class="place" v-html="item.restaurant" />
             </div>
-        </simple-card>    
+        </simple-card>
     </div>
 </template>
 
@@ -56,8 +60,10 @@ export default {
     props: {
         item: { required: true, type: Object },
         img: { required: true, type: String },
-        icon: { type: String },
-        icon2: { type: String },
+        textPrimaryButton: { type: String },
+        textSecondaryButton: { type: String },
+        stylePrimaryButton: { type: Object, default: () => ({ backgroundColor: 'teal' }) },
+        styleSecondaryButton: { type: Object, default: () => ({ backgroundColor: 'teal' }) },
         width: { default: '250px' },
         height: { default: '300px' },
         fontSize: { default: '1em' },
@@ -66,7 +72,7 @@ export default {
         borderRadius: { default: '8px' },
         accent: { default:  'teal' },
         backgroundFooter: { default: '#fff' },
-        padding: { default: '15px' },
+        padding: { default: '10px 15px' },
         button : { default: '0 0 8px 8px'}
     }
 };
@@ -90,45 +96,49 @@ export default {
     background-size: cover;
     flex: 1 1 auto;
 }
-.options {
+
+.price {
+    font-size: 0.98em;
+}
+
+.title-wrapper {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
+
     .title {
-        font-size: 1em;font-size: 1em;font-size: 1em;
+        font-size: 1.1em;
         margin: 0;
-        padding: 0; 
-    }   
+        padding: 0;
+    }
 
-} 
+}
 
-.options2{
+.options{
     display: flex;
-    padding-bottom: 15px;
+    align-items: center;
+
     .description {
-        margin-left:20px;
-        font-size: 0.9em;
+        margin-left: 15px;
+        font-size: 0.8em;
     }
 }
-    
+
 
 .buttons {
     width: 100%;
     display: flex;
     text-align: center;
-    padding-bottom: 15px;
     justify-content: space-between;
+    margin: 5px 0px;
 
     .button {
-        width: 47%;
+        flex: 1 1 auto;
+        padding: 5px 10px;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
-    .total {
-        width: 100%;
-        height: 30px;
-    }
-
 }
 
 .place{
