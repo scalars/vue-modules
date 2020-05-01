@@ -12,19 +12,32 @@
             <div slot="footer" :style="{padding, color}">
                 <div class="options">
                     <h3 class="title" v-html="item.title" :style="{ color: accent }"/>
-                    <img src="../assets/proximo.svg" />
                 </div>
                 <div class="options2">
                     <span class="price">${{item.price}}</span>
                     <span class="description" :style="{color: accent}">{{item.description}}</span>
                 </div>
                 <div class="buttons" :style="{color: titleColor}">
-                    <div class="left" :style="{backgroundColor: accent, borderRadius, color: titleColor}">
-                        <slot name="left"></slot>
-                    </div>
-                    <div class="right" :style="{backgroundColor: accent, borderRadius, color: titleColor}">
-                        <slot name="right"></slot>
-                    </div>
+                    <div class="total"  
+                        :style="{backgroundColor: accent, borderRadius, color: titleColor}" 
+                        v-if="icon && !icon2"
+                        v-html="icon"
+                    />
+                    <div class=" total"  
+                        :style="{backgroundColor: accent, borderRadius, color: titleColor}"
+                        v-if="!icon && icon2"
+                        v-html="icon2"
+                    />
+                    <div class="button"  
+                        :style="{backgroundColor: accent, borderRadius, color: titleColor}" 
+                        v-if="icon && icon2"
+                        v-html="icon"
+                    />
+                    <div class="button"  
+                        :style="{backgroundColor: accent, borderRadius, color: titleColor}" 
+                        v-if="icon && icon2"
+                        v-html="icon2"
+                    />
                 </div>
                 <div><span class="place">{{item.restaurant}}</span></div>
             </div>
@@ -43,7 +56,8 @@ export default {
     props: {
         item: { required: true, type: Object },
         img: { required: true, type: String },
-        icon: { type: String, default: null },
+        icon: { type: String },
+        icon2: { type: String },
         width: { default: '250px' },
         height: { default: '300px' },
         fontSize: { default: '1em' },
@@ -105,13 +119,16 @@ export default {
     padding-bottom: 15px;
     justify-content: space-between;
 
-    .left {
+    .button {
         width: 47%;
+        align-items: center;
+        justify-content: center;
+    }
+    .total {
+        width: 100%;
         height: 30px;
     }
-    .right {
-       width: 47%; 
-    }
+
 }
 
 .place{
