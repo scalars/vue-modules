@@ -24,7 +24,7 @@ export default {
         itemsPerRowMobile: { type: Number, default: 1 },
         heightItem: { type: String, default: '200px' },
         heightItemMobile: { type: String, default: '100px' },
-        icons: { type: Object, default: () => [] },
+        icons: { type: Array, default: () => [] },
         active: { type: Number, default: 0 }
     },
     components: {
