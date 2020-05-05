@@ -24,10 +24,10 @@
                     height: galleryConfig.height
                 }"
             >
-                <div v-if="!fullScreen" class="fullScreen-icon" @click="toggleZoom">
+                <div v-if="!fullScreen" class="fullScreen-icon" @click="toggleFullScreen">
                     <slot name="fullScreen-icon">+</slot>
                 </div>
-                <div v-if="fullScreen" class="close-icon" @click="toggleZoom">
+                <div v-if="fullScreen" class="close-icon" @click="toggleFullScreen">
                     <slot name="close-icon">X</slot>
                 </div>
                 <div class="prev-icon" @click="changeActive({direction: 4})">
@@ -148,7 +148,7 @@ export default {
                 this.active -= 1
             }
         },
-        toggleZoom() {
+        toggleFullScreen() {
             this.fullScreen = !this.fullScreen;
         }
     }
