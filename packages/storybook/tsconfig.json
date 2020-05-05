@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es5",
+    "module": "ES2015",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": false,
+    "noImplicitThis": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
