@@ -17,7 +17,8 @@
   ],
   "dependencies": {
     "vue": "^2.6.11",
-    "vue-styled-components": "^1.4.14"
+    "vue-styled-components": "^1.4.14",
+    "vue2-hammer": "^2.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
