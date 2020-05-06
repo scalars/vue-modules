@@ -177,7 +177,9 @@ export default {
 
     .fullScreen-wrapper {
         display: flex;
-        position: absolute;
+        position: fixed;
+        top: 0;
+        left: 0;
         overflow: hidden;
         z-index: 100000;
         transition: all 200ms ease-in-out;
