@@ -47,7 +47,7 @@ export default {
                 widthItems += item.elm.offsetWidth + marginLeft + marginRight
             });
             const offset = event.center.x - this.initialDragging;
-            if (this.position + offset > 0) {
+            if (this.position + offset > 0 || widthContainer >= widthItems) {
                 this.position = 0;
             } else if (this.position + offset < widthContainer - widthItems) {
                 this.position = widthContainer - widthItems;
