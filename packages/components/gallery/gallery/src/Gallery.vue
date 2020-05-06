@@ -177,14 +177,15 @@ export default {
 
     .fullScreen-wrapper {
         display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
+        position: absolute;
         overflow: hidden;
         z-index: 100000;
-        transition: all 200ms ease-in-out;
+        transition: all 100ms ease-in-out;
 
         &.active {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100vw!important;
             height: 100vh!important;
             background-color: rgba(0, 0, 0, 0.9);
