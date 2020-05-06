@@ -27,7 +27,14 @@
                 <div v-if="!fullScreen" class="fullScreen-icon" @click="toggleFullScreen">
                     <slot name="fullScreen-icon">+</slot>
                 </div>
-                <div v-if="fullScreen" class="close-icon" @click="toggleFullScreen">
+                <div v-if="fullScreen" class="close-icon" @click="toggleFullScreen"
+                     :style="{
+                        top: closeIconCoords.top,
+                        left: closeIconCoords.left,
+                        right: closeIconCoords.right,
+                        bottom: closeIconCoords.bottom
+                     }"
+                >
                     <slot name="close-icon">X</slot>
                 </div>
                 <div class="prev-icon" @click="changeActive({direction: 4})">
@@ -40,6 +47,7 @@
                     v-for="(image,index) of images"
                     :key="index"
                     class="image"
+                    @click.stop
                     :style="{
                         backgroundImage: `url(${image})`,
                         borderRadius: galleryConfig.borderRadius,
@@ -101,7 +109,8 @@ export default {
             height: 80,
             space: 10,
             borderRadius: '5px'
-        } ) }
+        } ) },
+        closeIconCoords: { type: Object, default: () => ({top: '0', right: '0'}) }
     },
     data() {
         return {
@@ -236,8 +245,6 @@ export default {
 
         .close-icon {
             position: absolute;
-            top: 0;
-            right: 0;
             z-index: 1;
             padding: 15px;
             cursor: pointer;
