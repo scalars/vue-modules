@@ -22,7 +22,7 @@
                     <span class="presentation" :style="{color: accent}">{{item.presentation}}</span>
                     <input
                             class="input"
-                            type="number" min="0" v-model="quantity"
+                            type="number" :min="min" v-model="quantity"
                             :style="{backgroundColor: accent, borderRadius}"
                             @change="$emit('change', quantity)"
                     >
@@ -54,14 +54,15 @@ export default {
         padding: { default: '10px 15px' },
         accent: { default: 'orange' },
         closeButtonColor: { default: 'red' },
-        closeButtonFontSize: { default: '0.9em' }
+        closeButtonFontSize: { default: '0.9em' },
+        min: { type: String, default: '1' }
     },
     mounted () {
-        this.quantity = this.item.quantity;
+        this.quantity = this.item.quantity >= this.min ? this.item.quantity : this.min;
     },
     data() {
         return {
-            quantity: 0
+            quantity: this.min
         };
     },
     computed: {
