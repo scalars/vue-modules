@@ -18,6 +18,9 @@
             <div
                 class="fullScreen-wrapper"
                 v-hammer:swipe="changeActive"
+                v-hammer:panstart="dragZoomStart"
+                v-hammer:pan="draggingZoom"
+                @dblclick="toggleZoom"
                 :class="{active: fullScreen}"
                 :style="{
                     width: galleryConfig.width,
@@ -37,22 +40,24 @@
                 >
                     <slot name="close-icon">X</slot>
                 </div>
-                <div class="prev-icon" @click="changeActive({direction: 4})">
+                <div v-if="!zoom" class="prev-icon" @click="changeActive({direction: 4})">
                     <slot name="left-icon">&lt;</slot>
                 </div>
-                <div class="next-icon" @click="changeActive({direction: 2})">
+                <div v-if="!zoom" class="next-icon" @click="changeActive({direction: 2})">
                     <slot name="right-icon">&gt;</slot>
                 </div>
                 <div
                     v-for="(image,index) of images"
                     :key="index"
                     class="image"
-                    @click.stop
                     :style="{
                         backgroundImage: `url(${image})`,
                         borderRadius: galleryConfig.borderRadius,
                         left: fullScreen ? '50%' : `calc( ${ galleryConfig.width } * ${-active} )`,
-                        opacity: active === index ? '1' : '0'
+                        opacity: active === index ? '1' : '0',
+                        transform: fullScreen && zoom
+                            ? `translate( calc( -50% + ${zoomPosition.left}px ), calc( -50% + ${zoomPosition.top}px ) ) scale(2)`
+                            : fullScreen ? 'translate(-50%, -50%)' : 'none'
                     }"
                 />
             </div>
@@ -89,7 +94,6 @@ import { VueHammer } from 'vue2-hammer';
 VueHammer.config = {
     pinch: { enable: false },
     rotate: { enable: false },
-    pan: { direction: 6 },
     swipe: { direction: 6 }
 }
 Vue.use(VueHammer);
@@ -118,7 +122,14 @@ export default {
             miniaturesPosition: 0,
             initialDrag: 0,
             hammering: false,
-            fullScreen: false
+            fullScreen: false,
+            zoom: false,
+            zoomPosition: {
+                initialLeft: 0,
+                left: 0,
+                initialTop: 0,
+                top: 0
+            }
         }
     },
     methods: {
@@ -145,20 +156,62 @@ export default {
                 this.hammering = false
             }, 50)
         },
+        dragZoomStart ( event ) {
+            this.zoomPosition.initialLeft = event.center.x;
+            this.zoomPosition.initialTop = event.center.y;
+        },
+        draggingZoom ( event ) {
+            if (this.zoom) {
+                const offsetX = event.center.x - this.zoomPosition.initialLeft;
+                const offsetY = event.center.y - this.zoomPosition.initialTop;
+                switch (event.direction) {
+                case 8: // top
+                case 16: // bottom
+                    const height = event.target.offsetHeight;
+                    const newPosY = this.zoomPosition.top + offsetY;
+                    if (newPosY >= -height && newPosY <= height) {
+                        this.zoomPosition.top = newPosY;
+                    }
+                    break;
+                case 2: // left
+                case 4: // right
+                    const width = event.target.offsetWidth;
+                    const newPosX = this.zoomPosition.left + offsetX;
+                    if (newPosX >= -width && newPosX <= width) {
+                        this.zoomPosition.left = newPosX;
+                    }
+                    break;
+                }
+                this.zoomPosition.initialLeft = event.center.x;
+                this.zoomPosition.initialTop = event.center.y;
+            }
+        },
         setActive(index) {
             if (!this.hammering) {
                 this.active = index;
             }
         },
         changeActive( event ) {
-            if ( event.direction === 2 && this.active + 1 < this.images.length ) {
-                this.active += 1
-            } else if ( event.direction === 4 && this.active - 1 >= 0 ) {
-                this.active -= 1
+            if (!this.zoom) {
+                if ( event.direction === 2 && this.active + 1 < this.images.length ) {
+                    this.active += 1
+                } else if ( event.direction === 4 && this.active - 1 >= 0 ) {
+                    this.active -= 1
+                }
             }
         },
         toggleFullScreen() {
             this.fullScreen = !this.fullScreen;
+            this.zoom = false;
+        },
+        toggleZoom() {
+            if (this.fullScreen) {
+                this.zoom = !this.zoom;
+                if (!this.zoom) {
+                    this.zoomPosition.left = 0;
+                    this.zoomPosition.top = 0;
+                }
+            }
         }
     }
 };
@@ -205,7 +258,6 @@ export default {
                 min-width: 80%;
                 max-height: 80%;
                 top: 50%;
-                transform: translate(-50%, -50%);
                 background-size: contain;
             }
 
