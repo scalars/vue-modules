@@ -69,6 +69,13 @@ export default {
         total () {
             return this.quantity * this.item.price;
         }
+    },
+    watch: {
+        quantity(value) {
+            if (value < this.min) {
+                this.quantity = this.min;
+            }
+        }
     }
 };
 </script>
