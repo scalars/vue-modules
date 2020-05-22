@@ -117,6 +117,10 @@ export default {
         text-align: center;
         flex: 1 1 auto;
 
+        .label {
+            margin-left: 5px;
+        }
+
         &.active {
             display: block;
         }
