@@ -21,6 +21,7 @@
                     <span class="price">${{item.price}}</span>
                     <span class="presentation" :style="{color: accent}">{{item.presentation}}</span>
                     <input
+                            @blur="itemFocus()"
                             class="input"
                             type="number" :min="min" v-model="quantity"
                             :style="{backgroundColor: accent, borderRadius}"
@@ -70,10 +71,10 @@ export default {
             return this.quantity * this.item.price;
         }
     },
-    watch: {
-        quantity(value) {
-            if (value < this.min) {
-                this.quantity = this.min;
+    methods: {
+        itemFocus () {
+            if ( this.quantity <= 0 ) {
+                this.quantity = 1;
             }
         }
     }
