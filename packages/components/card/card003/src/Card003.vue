@@ -74,7 +74,7 @@ export default {
     methods: {
         itemFocus () {
             if ( this.quantity <= 0 ) {
-                this.quantity = 1;
+                this.quantity = this.min;
             }
         }
     }
