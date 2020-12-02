@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../stories/**/*.stories.[tj]s'],
   addons: [
@@ -35,6 +37,12 @@ module.exports = {
         { loader: 'sass-loader', options: { sourceMap: true } }
       ]
     });
+    config.resolve.alias['core-js/modules'] =  path.resolve(
+        __dirname,
+        '..',
+        'node_modules/core-js/modules'
+    );
+
     return config;
   }
 };

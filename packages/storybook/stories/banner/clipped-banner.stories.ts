@@ -46,12 +46,14 @@ export const Default = () => ({
         }
     },
     watch: {
+        // @ts-ignore
         activeItem: function (value: any) {
             // @ts-ignore
             this.active = value;
         }
     },
     methods: {
+        // @ts-ignore
         setActive: function (index: any) {
             // @ts-ignore
             this.active = index;

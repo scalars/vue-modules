@@ -26,6 +26,7 @@ export const Default = () => ({
         defaultOption: { type: String, default: boolean('With default value', false, 'General') }
     },
     computed: {
+        // @ts-ignore
         defaultValue (): any {
             // @ts-ignore
             return this.defaultOption ? 'A-Z' : null;

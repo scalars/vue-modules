@@ -1,6 +1,6 @@
 // @ts-ignore
 import CardSlider from "../../../components/slider/card-slider/src/CardSlider.vue";
-import Card001 from "@vuemodules/card001";
+import Card001 from "../../../components/card/card001/src/Card001";
 
 export default {
     title: 'slider/CardSlider',

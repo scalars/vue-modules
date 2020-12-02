@@ -17,7 +17,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import SimpleCard from '@vuemodules/simple-card';
 
 export default {
