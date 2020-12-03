@@ -1,5 +1,5 @@
 // @ts-ignore
-import ChatList from "../../../components/chat/chat-list/src/ChatList.vue";
+import ChatList from "@vuemodules/chat-list";
 
 export default {
     title: 'chat/ChatList',

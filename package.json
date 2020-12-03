@@ -7,9 +7,6 @@
   "author": "Madrov S.A.S",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "lerna": "^3.22.1"
-  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec --ignore storybook yarn build",
