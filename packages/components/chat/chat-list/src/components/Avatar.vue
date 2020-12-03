@@ -4,7 +4,7 @@
             v-if="withDefaultImage"
             class="avatar-wrapper"
             :style="{
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${pictureUrl})`,
                 minWidth: size,
                 width: size,
                 height: size
@@ -26,7 +26,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Avatar extends Vue {
-    @Prop( {} ) picture: any;
+    @Prop( {required: true} ) pictureUrl: string;
     @Prop( {} ) label: string;
     @Prop( { default: 'mdi-fire' } ) icon: string;
     @Prop( { default: '82px' } ) size: string;
@@ -48,10 +48,6 @@ export default class Avatar extends Vue {
 
     radian ( angle: number ) {
         return angle * Math.PI / 180;
-    }
-
-    get image () {
-        return this.picture
     }
 }
 

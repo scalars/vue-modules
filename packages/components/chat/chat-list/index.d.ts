@@ -1,3 +1,5 @@
-declare module '@vuemodules/headersimple' {
-    import ChatList from 'src/ChatList.vue.d.ts'
+import ChatList from './lib/ChatList.vue'
+
+export {
+    ChatList
 }

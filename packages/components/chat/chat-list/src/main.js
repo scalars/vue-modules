@@ -1,4 +1,4 @@
-import ChatList from "./ChatList.vue";
+import ChatList from "./ChatList";
 
 export default ChatList;
 export { ChatList };

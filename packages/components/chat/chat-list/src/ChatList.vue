@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <perfect-scrollbar class="scroll">
+    <perfect-scrollbar class="scroll" data-app>
       <div v-for="(message, index) of chatList" :key="`msg-ch${index}`" class="message">
-        <avatar picture="" :action="false" size="35px" class="avatar" />
+        <avatar :pictureUrl="message.avatar.url" :action="false" size="35px" class="avatar" />
         <div class="text">
           <p>
             {{ message.text }}
@@ -18,7 +17,7 @@
             </template>
             <v-list>
               <v-list-item
-                  v-for="(item, i) in menu"
+                  v-for="(item, i) in message.options"
                   :key="`menu-${i}`"
               >
                 <v-list-item-title @click="$emit( item.event, message )">
@@ -30,26 +29,22 @@
         </div>
       </div>
     </perfect-scrollbar>
-  </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Avatar from '@/components/Avatar.vue';
-import { Chat, MenuOption } from '@/components/chatInterfaces.ts';
-import HelloWorld from "@/components/HelloWorld.vue";
+import Avatar from './components/Avatar.vue';
+import { Chat } from './components/chatInterfaces';
 import {PerfectScrollbar} from 'vue2-perfect-scrollbar';
 
 @Component({
   components: {
-    HelloWorld,
     Avatar,
     PerfectScrollbar
   },
 })
 export default class ChatList extends Vue {
   @Prop( { required: true } ) chatList: Chat[];
-  @Prop() menu: MenuOption[];
 }
 
 </script>

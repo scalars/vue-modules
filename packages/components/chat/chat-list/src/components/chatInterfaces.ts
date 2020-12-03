@@ -9,8 +9,8 @@ export interface Chat {
     id: number;
     text: string;
     createdAt: string;
-    user: User;
-    options?: {label: string, event: string}[]
+    avatar: { label?: string; url: string};
+    options?: {label: string; event: string}[];
 }
 
 export interface Header {

@@ -14,9 +14,11 @@
     "noImplicitThis": true,
     "sourceMap": true,
     "declaration": true,
+    "declarationDir": "lib",
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "vuetify",
     ],
     "paths": {
       "@/*": [
