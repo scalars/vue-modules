@@ -7,10 +7,11 @@ export interface User {
 
 export interface Chat {
     id: number;
-    text: string;
-    createdAt: string;
+    title: string;
+    subtitle: string;
     avatar: { label?: string; url: string};
     options?: {label: string; event: string}[];
+    count?: number;
 }
 
 export interface Header {

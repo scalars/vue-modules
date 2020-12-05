@@ -5,9 +5,9 @@ import vuetify from './plugins/vuetify';
 Vue.config.productionTip = false
 
 const messages = [
-    {text: "hello", id: 1, createdAt: "january", avatar: {url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXVLL0cOSXWk%2Fmaxresdefault.jpg&f=1&nofb=1"}, options: [{label: "Hello"}]},
-    {text: "hello", id: 1, createdAt: "january", avatar: {}},
-    {text: "hello", id: 1, createdAt: "january", avatar: {}},
+    {title: "hello", id: 1, subtitle: "january", avatar: {url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXVLL0cOSXWk%2Fmaxresdefault.jpg&f=1&nofb=1"}, options: [{label: "Hello"}]},
+    {title: "hello asdf adsf d fasdf asdf asdfasdfasdfasdfasdf asdf asdf", id: 1, subtitle: "janasdfdasary", avatar: {}},
+    {title: "hello", id: 1, subtitle: "january", avatar: {}, count: 10},
 ]
 
 new Vue({

@@ -1,14 +1,13 @@
 <template>
     <perfect-scrollbar class="scroll" data-app>
-      <div v-for="(message, index) of chatList" :key="`msg-ch${index}`" class="message">
-        <avatar :pictureUrl="message.avatar.url" :action="false" size="35px" class="avatar" />
-        <div class="text">
-          <p>
-            {{ message.text }}
-          </p>
-          <span class="date">{{ message.createdAt }}</span>
+      <div v-for="(chat, index) of chatList" :key="`msg-ch${index}`" class="vm--chat-card__container" @click.stop="itemClick(chat)">
+        <avatar v-if="chat.avatar.url" :pictureUrl="chat.avatar.url" :action="false" size="35px" class="vm--chat-card__avatar" @click="itemClick(chat)"/>
+        <div class="vm--chat-card__body">
+          <p class="vm--chat-card__title" @click.stop="titleClick(chat)">{{ chat.title }}</p>
+          <p class="vm--chat-card__subtitle">{{ chat.subtitle }}</p>
         </div>
-        <div v-if="message.options && message.options.length > 0" class="options">
+        <div v-if="chat.count && chat.count > 0" class="vm--chat-card__count">{{chat.count}}</div>
+        <div v-if="chat.options && chat.options.length > 0" class="vm--chat-card__options">
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-icon color="accent" v-bind="attrs" v-on="on">
@@ -17,10 +16,10 @@
             </template>
             <v-list>
               <v-list-item
-                  v-for="(item, i) in message.options"
+                  v-for="(item, i) in chat.options"
                   :key="`menu-${i}`"
               >
-                <v-list-item-title @click="$emit( item.event, message )">
+                <v-list-item-title @click="$emit( item.event, chat )">
                   {{ item.label }}
                 </v-list-item-title>
               </v-list-item>
@@ -32,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Emit, Vue } from 'vue-property-decorator';
 import Avatar from './components/Avatar.vue';
 import { Chat } from './components/chatInterfaces';
 import {PerfectScrollbar} from 'vue2-perfect-scrollbar';
@@ -44,49 +43,71 @@ import {PerfectScrollbar} from 'vue2-perfect-scrollbar';
   },
 })
 export default class ChatList extends Vue {
+  //Props
   @Prop( { required: true } ) chatList: Chat[];
+
+  //Events
+  @Emit('item-click')
+  itemClick(chat: Chat) {
+    return chat
+  }
+  @Emit('avatar-click')
+  avatarClick(chat: Chat) {
+    return chat
+  }
+  @Emit('title-click')
+  titleClick(chat: Chat) {
+    return chat
+  }
 }
 
 </script>
 
-<style lang="scss" scoped>
-.message {
-  display: flex;
-  align-items: flex-end;
-  padding: 10px;
-
-  .avatar {
-    margin-right: 10px;
-    margin-bottom: 5px;
-  }
-
-  .text {
-    flex: 1 1 auto;
-    max-width: 600px;
-    background-color: #eaeaea;
+<style lang="scss" >
+.vm--chat-card__ {
+  &container {
+    display: flex;
     padding: 10px;
-    border-radius: 3px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 46px;
+    overflow: hidden;
 
-    p {
+    //reset
+    p, span {
       margin: 0;
-    }
-
-    .date {
-      font-size: 0.85em;
+      padding: 0;
     }
   }
 
-  &.owner {
-    justify-content: flex-end;
-    align-items: center;
+  &options, &count {
+    margin-left: auto;
+  }
 
-    .text {
-      background-color: red;
-      color: #fff;
-    }
+  &avatar {
+    margin-right: 10px;
+  }
+
+  &title {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &subtitle {
+    font-size: 0.8rem;
+  }
+
+  &count {
+    border-radius: 50%;
+    background-color: lightgrey;
+    font-size: 0.8rem;
+    padding: 4px;
   }
 }
-.ps {
-  max-height: 100%;
+
+.v-list-item__title {
+  cursor:  pointer;
 }
 </style>
