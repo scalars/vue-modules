@@ -35,10 +35,10 @@ const header = {
     subtitle: 'Great Chat'
 }
 
-const headerMenu = {
-    title: 'My option',
+const headerMenu = [{
+    label: 'My option',
     event: 'my-menu'
-}
+}]
 
 new Vue({
   vuetify,

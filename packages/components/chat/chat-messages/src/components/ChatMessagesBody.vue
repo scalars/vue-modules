@@ -35,10 +35,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 import Avatar from './Avatar.vue';
 import { Message, MenuOption, User } from './chatInterfaces';
 import {PerfectScrollbar} from 'vue2-perfect-scrollbar';
+import {Chat} from "../../../chat-list/src/components/chatInterfaces";
 
 @Component( {
     components: {

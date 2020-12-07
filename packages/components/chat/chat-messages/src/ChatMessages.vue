@@ -18,6 +18,7 @@
             :users="users"
             :messages-avatar="messagesAvatar"
             :scroll-area-height="getScrollAreaHeight()"
+            @action-click="headerActionClick"
         />
         <chat-messages-input @sendMessage="$emit('sendMessage', $event)">
             <slot />
@@ -26,11 +27,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 import ChatMessagesHeader from './components/ChatMessagesHeader.vue';
 import ChatMessagesBody from './components/ChatMessagesBody.vue';
 import ChatMessagesInput from './components/ChatMessagesInput.vue';
 import { Header, MenuOption, User, Message } from './components/chatInterfaces';
+import {Chat} from "../../chat-list/src/components/chatInterfaces";
 
 @Component( {
     components: {
@@ -70,6 +72,20 @@ export default class ChatMessages extends Vue {
       } else {
         return 'calc(100vh - 40px)'
       }
+  }
+
+  //Events
+  @Emit('header-action-click')
+  headerActionClick(chat: Chat) {
+    return chat
+  }
+  @Emit('avatar-click')
+  avatarClick(chat: Chat) {
+    return chat
+  }
+  @Emit('title-click')
+  titleClick(chat: Chat) {
+    return chat
   }
 }
 

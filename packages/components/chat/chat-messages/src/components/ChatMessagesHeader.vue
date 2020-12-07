@@ -1,7 +1,7 @@
 <template>
-    <div v-if="header" class="chat-header-wrapper">
+    <div v-if="header" class="chat-header-wrapper" data-app>
         <div style="display: inline">
-          <slot name="mainAction" v-if="includeMainAction" @click="$emit('actionClick')">
+          <slot name="mainAction" v-if="includeMainAction" @click.stop="actionClick">
           <v-icon class="vm-chat-header__main-action-icon">
             mdi-arrow-left
           </v-icon>
@@ -15,7 +15,7 @@
             @usernameAction="$emit('usernameAction')"
             @labelAction="$emit('labelAction')"
         />
-        <div v-if="menu" class="options">
+        <div v-if="menu && menu.length > 0" class="options">
             <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                     <v-icon color="accent" v-bind="attrs" v-on="on">
@@ -38,9 +38,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 import UserWidget from './UserWidget.vue';
 import { Header, MenuOption } from './chatInterfaces';
+import {Chat} from "../../../chat-list/src/components/chatInterfaces";
 
 @Component( {
     components: {
@@ -51,6 +52,16 @@ export default class ChatMessagesHeader extends Vue {
     @Prop( {default: false} ) includeMainAction: boolean;
     @Prop( ) header: Header;
     @Prop() menu: MenuOption[];
+
+    mounted() {
+      console.log(this.menu)
+    }
+
+  //Events
+  @Emit('action-click')
+  actionClick(chat: Chat) {
+    return chat
+  }
 }
 
 </script>
