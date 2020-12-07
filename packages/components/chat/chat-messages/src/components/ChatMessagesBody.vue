@@ -1,15 +1,15 @@
 <template>
     <div class="vm-chat-msg__body--container">
-            <perfect-scrollbar class="scroll">
+            <perfect-scrollbar class="scroll" :style="{height: scrollAreaHeight}">
                 <div v-for="(message, index) of messages" :key="`msg-ch${index}`" class="vm-chat-msg__message" :class="{owner: message.userId === ownerUserId}">
-                    <avatar v-if="includeAvatar && (message.userId !== ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
-                    <div class="text">
-                        <p>
+                    <avatar v-if="messagesAvatar && (message.userId !== ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
+                    <div class="vm-chat-msg__message-text-wrapper" :class="{owner: message.userId === ownerUserId}">
+                        <p class="vm-chat-msg__message-text" :class="{owner: message.userId === ownerUserId}">
                             {{ message.text }}
                         </p>
                         <span class="vm-chat-msg__date">{{ message.date }}</span>
                     </div>
-                  <avatar v-if="includeAvatar && (message.userId === ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
+                  <avatar v-if="messagesAvatar && (message.userId === ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
                     <div v-if="message.userId === ownerUserId && menu" class="options">
                         <v-menu offset-y>
                             <template v-slot:activator="{ on, attrs }">
@@ -50,7 +50,8 @@ export default class ChatMessagesBody extends Vue {
     @Prop( { required: true } ) messages: Message [];
     @Prop( { required: true } ) users: User [];
     @Prop( { required: true } ) ownerUserId: number|string;
-    @Prop( { default: true } ) includeAvatar: boolean;
+    @Prop( { default: 'calc(100vh - 40px)' } ) scrollAreaHeight: string;
+    @Prop( { default: true } ) messagesAvatar: boolean;
     @Prop() menu: MenuOption[];
 
     getUserAvatar(userMessageId: number | string) {
@@ -62,11 +63,12 @@ export default class ChatMessagesBody extends Vue {
 
 <style lang="scss" >
 .vm-chat-msg__body--container {
-  min-height: 100px;
+  //min-height: 100px;
 }
 
 .vm-chat-msg__date {
   font-size: 0.8em;
+  color: gray;
 }
 
 .vm-chat-msg__message {
@@ -79,19 +81,34 @@ export default class ChatMessagesBody extends Vue {
         margin: 0 10px;
     }
 
-    .text {
-        flex: 1 1 auto;
-        background-color: #eaeaea;
-        padding: 10px;
-        border-radius: 3px;
-
-        p {
-            margin: 0;
-        }
-    }
-
     &.owner {
         margin-left: auto;
     }
+}
+
+.vm-chat-msg__message-text-wrapper {
+  p {
+    margin: 0;
+  }
+
+  &.owner {
+    margin-left: auto;
+  }
+}
+
+.vm-chat-msg__message-text {
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 3px;
+
+  &.owner {
+    background-color: lightblue;
+  }
+}
+
+//Needed for perfect scrollbar
+.ps__rail-x, .ps__rail-y{ display: none !important; }
+.ps {
+  overflow: hidden;
 }
 </style>

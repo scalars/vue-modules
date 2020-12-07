@@ -7,8 +7,13 @@ Vue.config.productionTip = false
 
 const messages: Message [] = [
     {id: 1, text: 'helloooo world', date: 'jan 1, 2020', userId: 1},
-    {id: 2, text: 'helloooo world 2231 123', date: 'jan 1, 2020', userId: 1},
-    {id: 3, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2}
+    {id: 2, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2},
+    {id: 3, text: `helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123  helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123' +
+            helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123`, date: 'jan 1, 2020', userId: 1},
+    {id: 4, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2},
+    {id: 5, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1},
+    {id: 6, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1},
+    {id: 7, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1}
 ]
 
 const users: User [] = [
@@ -19,7 +24,7 @@ const users: User [] = [
     },
     {
         id: 2,
-        avatar: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXVLL0cOSXWk%2Fmaxresdefault.jpg&f=1&nofb=1',
+        avatar: 'https://homepages.cae.wisc.edu/~ece533/images/baboon.png',
         name: 'Vale'
     }
 ]

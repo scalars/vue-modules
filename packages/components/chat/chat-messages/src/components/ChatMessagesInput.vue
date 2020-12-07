@@ -1,20 +1,22 @@
 <template>
-    <div class="chat-input-wrapper">
-        <slot>
+    <div class="vm-chat-input__wrapper">
+        <slot name="input">
             <v-text-field
                 v-model="message"
                 solo
                 dense
                 hide-details
-                class="input"
+                class="vm-chat-msg__input-input"
                 @keyup.enter="sendMessage"
             />
         </slot>
-        <v-btn style="margin-left: 25px" @click="sendMessage">
+       <slot name="send-btn">
+        <v-btn @click="sendMessage" class="vm-chat-msg__input-send-btn">
           <v-icon>
             mdi-send
           </v-icon>
         </v-btn>
+       </slot>
     </div>
 </template>
 
@@ -34,14 +36,22 @@ export default class ChatMessagesInput extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.chat-input-wrapper {
+.vm-chat-input__wrapper {
     display: flex;
-    height: 55px;
+    height: 40px;
     justify-content: center;
     align-items: flex-start;
     box-sizing: border-box;
     padding: 0 10px;
-    margin-top: auto;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.vm-chat-msg__input {
+}
+
+.vm-chat-msg__input-send-btn {
+  margin-left: 25px;
 }
 </style>

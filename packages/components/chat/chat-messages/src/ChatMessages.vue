@@ -8,7 +8,15 @@
             @usernameAction="$emit('usernameAction')"
             @labelAction="$emit('labelAction')"
         />
-        <chat-messages-body ref="messages" class="messages" :owner-user-id="ownerUserId" :messages="messages" :menu="menu"  :users="users"/>
+        <chat-messages-body
+            ref="messages"
+            class="messages"
+            :owner-user-id="ownerUserId"
+            :messages="messages"
+            :menu="menu"
+            :users="users"
+            :messages-avatar="messagesAvatar"
+        />
         <chat-messages-input @sendMessage="$emit('sendMessage', $event)">
             <slot />
         </chat-messages-input>
@@ -33,6 +41,8 @@ export default class ChatMessages extends Vue {
   @Prop( {required: true} ) ownerUserId: number;
   @Prop( {required: true} ) users: User [];
   @Prop( { required: true, default: [] } ) messages: Message[];
+  @Prop( { default: false } ) messagesAvatar: boolean;
+  @Prop( { default: 'calc(100vh - 40px)' } ) scrollAreaHeight: string;
   @Prop() menu: MenuOption[];
   @Prop() header: Header;
 
@@ -57,6 +67,7 @@ export default class ChatMessages extends Vue {
     background-color: #fff;
     height: 100%;
     position: relative;
+    padding-bottom: 40px;
 
     .messages {
 
