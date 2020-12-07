@@ -29,7 +29,18 @@ const users: User [] = [
     }
 ]
 
+const header = {
+    avatar: 'https://free-images.com/lg/5c4e/mont_blanc_2005_118.jpg',
+    title: "My chat",
+    subtitle: 'Great Chat'
+}
+
+const headerMenu = {
+    title: 'My option',
+    event: 'my-menu'
+}
+
 new Vue({
   vuetify,
-  render: createElement => createElement(ChatMessages, {props: {messages: messages, users, ownerUserId: 1}})
+  render: createElement => createElement(ChatMessages, {props: {messages: messages, users, ownerUserId: 1, header, headerMenu}})
 }).$mount('#app')

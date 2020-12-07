@@ -4,7 +4,8 @@
             v-if="header"
             ref="header"
             :header="header"
-            :menu="menu"
+            :menu="headerMenu"
+            :include-main-action="includeMainAction"
             @usernameAction="$emit('usernameAction')"
             @labelAction="$emit('labelAction')"
         />
@@ -16,6 +17,7 @@
             :menu="menu"
             :users="users"
             :messages-avatar="messagesAvatar"
+            :scroll-area-height="getScrollAreaHeight()"
         />
         <chat-messages-input @sendMessage="$emit('sendMessage', $event)">
             <slot />
@@ -42,8 +44,10 @@ export default class ChatMessages extends Vue {
   @Prop( {required: true} ) users: User [];
   @Prop( { required: true, default: [] } ) messages: Message[];
   @Prop( { default: false } ) messagesAvatar: boolean;
-  @Prop( { default: 'calc(100vh - 40px)' } ) scrollAreaHeight: string;
+  @Prop( { default: false } ) includeMainAction: boolean;
+  @Prop() scrollAreaHeight: string;
   @Prop() menu: MenuOption[];
+  @Prop() headerMenu: MenuOption[];
   @Prop() header: Header;
 
     mounted () {
@@ -56,6 +60,17 @@ export default class ChatMessages extends Vue {
             } );
         }
     }
+
+  getScrollAreaHeight() {
+      if (this.scrollAreaHeight) {
+        return this.scrollAreaHeight
+      }
+      if (this.header) {
+        return 'calc(100vh - 95px)'
+      } else {
+        return 'calc(100vh - 40px)'
+      }
+  }
 }
 
 </script>

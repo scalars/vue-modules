@@ -1,6 +1,6 @@
 <template>
     <div class="vm-chat-msg__body--container">
-            <perfect-scrollbar class="scroll" :style="{height: scrollAreaHeight}">
+            <perfect-scrollbar class="scroll" :style="{height: scrollAreaHeight}" ref="scroll">
                 <div v-for="(message, index) of messages" :key="`msg-ch${index}`" class="vm-chat-msg__message" :class="{owner: message.userId === ownerUserId}">
                     <avatar v-if="messagesAvatar && (message.userId !== ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
                     <div class="vm-chat-msg__message-text-wrapper" :class="{owner: message.userId === ownerUserId}">
@@ -56,6 +56,12 @@ export default class ChatMessagesBody extends Vue {
 
     getUserAvatar(userMessageId: number | string) {
       return this.users.find(user => user.id === userMessageId)?.avatar;
+    }
+
+    mounted () {
+      const scroll = this.$refs.scroll as any;
+      scroll.$el.scrollTop = scroll.$el.clientHeight;
+      console.log(scroll.$el.clientHeight)
     }
 }
 

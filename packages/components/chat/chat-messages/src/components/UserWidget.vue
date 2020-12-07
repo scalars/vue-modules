@@ -1,6 +1,6 @@
 <template>
     <div class="user-widget-wrapper" @click="$emit('click', $event)">
-        <avatar class="avatar" :picture="picture" :size="pictureSize" :action="false" :with-default-image="withDefaultImage" />
+        <avatar class="avatar" :picture-url="picture" :size="pictureSize" :action="false" :with-default-image="withDefaultImage" />
         <div v-if="username || label" class="user-info">
             <span v-if="username" class="username" @click="$emit('usernameAction')">{{ username }}</span>
             <span

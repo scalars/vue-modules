@@ -1,5 +1,13 @@
 <template>
     <div v-if="header" class="chat-header-wrapper">
+        <div style="display: inline">
+          <slot name="mainAction" v-if="includeMainAction" @click="$emit('actionClick')">
+          <v-icon class="vm-chat-header__main-action-icon">
+            mdi-arrow-left
+          </v-icon>
+          </slot>
+        </div>
+
         <user-widget
             :picture="header.avatar"
             :username="header.title"
@@ -40,6 +48,7 @@ import { Header, MenuOption } from './chatInterfaces';
     }
 } )
 export default class ChatMessagesHeader extends Vue {
+    @Prop( {default: false} ) includeMainAction: boolean;
     @Prop( ) header: Header;
     @Prop() menu: MenuOption[];
 }
@@ -50,14 +59,21 @@ export default class ChatMessagesHeader extends Vue {
 .chat-header-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 55px;
     min-height: 55px;
     padding: 0 10px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.options {
+  margin-left: auto;
+}
+
 .back-button {
     cursor: pointer;
+}
+
+.vm-chat-header__main-action-icon {
+  margin-right: 10px;
 }
 </style>
