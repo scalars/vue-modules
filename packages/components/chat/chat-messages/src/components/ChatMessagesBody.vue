@@ -110,6 +110,7 @@ export default class ChatMessagesBody extends Vue {
   padding: 10px;
   border-radius: 3px;
   padding-left: 15px;
+  min-width: 160px;
 
   &.owner {
     background-color: lightblue;
