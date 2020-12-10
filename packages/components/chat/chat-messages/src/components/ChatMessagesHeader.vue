@@ -1,5 +1,5 @@
 <template>
-    <div v-if="header" class="chat-header-wrapper" data-app>
+    <div v-if="header" class="vm-chat-header__wrapper" data-app>
         <div style="display: inline" @click.stop="actionClick">
           <slot name="main-action" v-if="includeMainAction">
             <v-icon class="vm-chat-header__main-action-icon">
@@ -75,7 +75,7 @@ export default class ChatMessagesHeader extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.chat-header-wrapper {
+.vm-chat-header__wrapper {
     display: flex;
     align-items: center;
     height: 55px;

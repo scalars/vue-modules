@@ -1,14 +1,14 @@
 <template>
-    <div class="user-widget-wrapper" @click="$emit('click', $event)">
+    <div class="vm-user-widget__wrapper" @click="$emit('click', $event)">
         <avatar
-            class="avatar"
+            class="vm-user-widget__avatar"
             :picture-url="picture"
             :size="pictureSize"
             :action="false"
             :with-default-image="withDefaultImage"
             @click="avatarClick"
         />
-        <div v-if="username || label" class="user-info">
+        <div v-if="username || label" class="vm-user-widget__user-info">
             <span v-if="username" class="username" @click="$emit('usernameAction')">{{ username }}</span>
             <span
                 v-if="label"
@@ -51,26 +51,28 @@ export default class UserWidget extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.user-widget-wrapper {
+.vm-user-widget__ {
+  &wrapper {
     display: flex;
     align-items: center;
     width: auto;
+  }
 
-    .avatar {
-        margin-right: 10px;
-    }
+  &user-info {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .user-info {
-        display: flex;
-        flex-direction: column;
+  &username {
+    cursor: pointer;
+  }
 
-        .username {
-            cursor: pointer;
-        }
+  &label {
+    font-size: 0.85em;
+  }
 
-        .label {
-            font-size: 0.85em;
-        }
-    }
+  &avatar {
+    margin-right: 10px;
+  }
 }
 </style>
