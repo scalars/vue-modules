@@ -1,16 +1,18 @@
 <template>
     <div class="chat-wrapper">
-        <chat-messages-header
-            v-if="header"
-            ref="header"
-            :header="header"
-            :menu="headerMenu"
-            :include-main-action="includeMainAction"
-            @usernameAction="titleClick"
-            @labelAction="subtitleClick"
-            @action-click="headerActionClick"
-            @avatar-click="avatarClick"
-        />
+        <slot name="chat-header">
+          <chat-messages-header
+              v-if="header"
+              ref="header"
+              :header="header"
+              :menu="headerMenu"
+              :include-main-action="includeMainAction"
+              @usernameAction="titleClick"
+              @labelAction="subtitleClick"
+              @action-click="headerActionClick"
+              @avatar-click="avatarClick"
+          />
+        </slot>
         <chat-messages-body
             ref="messages"
             class="messages"
