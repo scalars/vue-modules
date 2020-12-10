@@ -8,7 +8,7 @@
           <p class="vm--chat-card__helper-text">{{ chat.helperText }}</p>
         </div>
         <div v-if="chat.count && chat.count > 0" class="vm--chat-card__count">{{chat.count}}</div>
-        <div v-if="chat.options && chat.options.length > 0" class="vm--chat-card__options">
+        <div v-if="chat.options && chat.options.length > 0" class="vm--chat-card__options" :style="{marginLeft: chat.count > 0 ? null : 'auto'}">
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-icon color="accent" v-bind="attrs" v-on="on">
@@ -83,7 +83,7 @@ export default class ChatList extends Vue {
     }
   }
 
-  &options, &count {
+  &count {
     margin-left: auto;
   }
 
