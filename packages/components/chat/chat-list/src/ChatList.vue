@@ -109,6 +109,11 @@ export default class ChatList extends Vue {
     background-color: lightgrey;
     font-size: 0.8rem;
     padding: 4px;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
   }
 }
 
