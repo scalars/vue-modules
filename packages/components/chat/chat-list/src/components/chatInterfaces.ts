@@ -9,6 +9,7 @@ export interface Chat {
     id: number;
     title: string;
     subtitle: string;
+    helperText?: string;
     avatar: { label?: string; url: string};
     options?: {label: string; event: string}[];
     count?: number;

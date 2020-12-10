@@ -5,6 +5,7 @@
         <div class="vm--chat-card__body">
           <p class="vm--chat-card__title" @click.stop="titleClick(chat)">{{ chat.title }}</p>
           <p class="vm--chat-card__subtitle">{{ chat.subtitle }}</p>
+          <p class="vm--chat-card__helper-text">{{ chat.helperText }}</p>
         </div>
         <div v-if="chat.count && chat.count > 0" class="vm--chat-card__count">{{chat.count}}</div>
         <div v-if="chat.options && chat.options.length > 0" class="vm--chat-card__options">
@@ -97,6 +98,10 @@ export default class ChatList extends Vue {
 
   &subtitle {
     font-size: 0.8rem;
+  }
+
+  &helper-text {
+    font-size: 0.6rem;
   }
 
   &count {
