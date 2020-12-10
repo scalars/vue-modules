@@ -16,7 +16,9 @@
             @labelAction="$emit('labelAction')"
             @avatar-click="avatarClick"
         />
-        <div v-if="menu && menu.length > 0" class="options">
+
+        <slot name="menu">
+          <div v-if="menu && menu.length > 0" class="options">
             <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                     <v-icon color="accent" v-bind="attrs" v-on="on">
@@ -35,6 +37,7 @@
                 </v-list>
             </v-menu>
         </div>
+        </slot>
     </div>
 </template>
 

@@ -11,7 +11,9 @@
               @labelAction="subtitleClick"
               @action-click="headerActionClick"
               @avatar-click="avatarClick"
-          />
+          >
+            <slot name="menu" />
+          </chat-messages-header>
         </slot>
         <chat-messages-body
             ref="messages"

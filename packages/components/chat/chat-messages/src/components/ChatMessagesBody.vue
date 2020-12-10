@@ -99,6 +99,9 @@ export default class ChatMessagesBody extends Vue {
 
   &.owner {
     margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
 
@@ -106,9 +109,12 @@ export default class ChatMessagesBody extends Vue {
   background-color: lightgrey;
   padding: 10px;
   border-radius: 3px;
+  padding-left: 15px;
 
   &.owner {
     background-color: lightblue;
+    padding-right: 15px;
+    text-align: right;
   }
 }
 
