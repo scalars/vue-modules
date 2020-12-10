@@ -42,5 +42,5 @@ const headerMenu = [{
 
 new Vue({
   vuetify,
-  render: createElement => createElement(ChatMessages, {props: {messages: messages, users, ownerUserId: 1, header, headerMenu}})
+  render: createElement => createElement(ChatMessages, {props: {messages: messages, users, ownerUserId: 1, header, headerMenu, includeMainAction: true}})
 }).$mount('#app')

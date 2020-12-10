@@ -1,5 +1,5 @@
-import ChatList from './lib/ChatList.vue'
+import ChatMessages from './lib/ChatMessages.vue'
 
 export {
-    ChatList
+    ChatMessages
 }

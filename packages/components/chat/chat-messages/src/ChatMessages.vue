@@ -6,8 +6,10 @@
             :header="header"
             :menu="headerMenu"
             :include-main-action="includeMainAction"
-            @usernameAction="$emit('usernameAction')"
-            @labelAction="$emit('labelAction')"
+            @usernameAction="titleClick"
+            @labelAction="subtitleClick"
+            @action-click="headerActionClick"
+            @avatar-click="avatarClick"
         />
         <chat-messages-body
             ref="messages"
@@ -18,11 +20,10 @@
             :users="users"
             :messages-avatar="messagesAvatar"
             :scroll-area-height="getScrollAreaHeight()"
-            @action-click="headerActionClick"
         />
-        <chat-messages-input @sendMessage="$emit('sendMessage', $event)">
-            <slot />
-        </chat-messages-input>
+        <slot name="chat-input">
+          <chat-messages-input @sendMessage="sendMessage($event)"/>
+        </slot>
     </div>
 </template>
 
@@ -32,7 +33,6 @@ import ChatMessagesHeader from './components/ChatMessagesHeader.vue';
 import ChatMessagesBody from './components/ChatMessagesBody.vue';
 import ChatMessagesInput from './components/ChatMessagesInput.vue';
 import { Header, MenuOption, User, Message } from './components/chatInterfaces';
-import {Chat} from "../../chat-list/src/components/chatInterfaces";
 
 @Component( {
     components: {
@@ -42,28 +42,39 @@ import {Chat} from "../../chat-list/src/components/chatInterfaces";
     }
 } )
 export default class ChatMessages extends Vue {
+  /**
+   *  REQUIRED PROPS
+   **/
   @Prop( {required: true} ) ownerUserId: number;
   @Prop( {required: true} ) users: User [];
   @Prop( { required: true, default: [] } ) messages: Message[];
-  @Prop( { default: false } ) messagesAvatar: boolean;
-  @Prop( { default: false } ) includeMainAction: boolean;
+
+  /**
+   *  PROPS
+   **/
+  @Prop( { default: false } ) messagesAvatar: boolean; //default: false
+  @Prop( { default: false } ) includeMainAction: boolean; //default: false
   @Prop() scrollAreaHeight: string;
   @Prop() menu: MenuOption[];
   @Prop() headerMenu: MenuOption[];
   @Prop() header: Header;
 
-    mounted () {
-        if ( this.menu ) {
-            const header: Vue = this.$refs.header as Vue;
-            this.menu.forEach( ( option: MenuOption ) => {
-                header.$on( option.event, () => {
-                    this.$emit( option.event );
-                } );
-            } );
-        }
-    }
+  /**
+   *  METHODS
+   **/
 
-  getScrollAreaHeight() {
+  mounted () {
+      if ( this.menu ) {
+          const header: Vue = this.$refs.header as Vue;
+          this.menu.forEach( ( option: MenuOption ) => {
+              header.$on( option.event, () => {
+                  this.$emit( option.event );
+              } );
+          } );
+      }
+  }
+
+  private getScrollAreaHeight() {
       if (this.scrollAreaHeight) {
         return this.scrollAreaHeight
       }
@@ -74,18 +85,31 @@ export default class ChatMessages extends Vue {
       }
   }
 
-  //Events
+  /**
+   * EVENTS
+   */
   @Emit('header-action-click')
-  headerActionClick(chat: Chat) {
-    return chat
+  headerActionClick() {
+    return
   }
   @Emit('avatar-click')
-  avatarClick(chat: Chat) {
-    return chat
+  avatarClick() {
+    return
   }
+
   @Emit('title-click')
-  titleClick(chat: Chat) {
-    return chat
+  titleClick() {
+    return
+  }
+
+  @Emit('subtitle-click')
+  subtitleClick() {
+    return
+  }
+
+  @Emit('send-message')
+  sendMessage(message: string) {
+    return message
   }
 }
 

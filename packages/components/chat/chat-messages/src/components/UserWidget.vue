@@ -1,6 +1,13 @@
 <template>
     <div class="user-widget-wrapper" @click="$emit('click', $event)">
-        <avatar class="avatar" :picture-url="picture" :size="pictureSize" :action="false" :with-default-image="withDefaultImage" />
+        <avatar
+            class="avatar"
+            :picture-url="picture"
+            :size="pictureSize"
+            :action="false"
+            :with-default-image="withDefaultImage"
+            @click="avatarClick"
+        />
         <div v-if="username || label" class="user-info">
             <span v-if="username" class="username" @click="$emit('usernameAction')">{{ username }}</span>
             <span
@@ -16,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
 import Avatar from './Avatar.vue';
 
 @Component( {
@@ -34,6 +41,11 @@ export default class UserWidget extends Vue {
     @Prop( { default: '#35C3D0' } ) colorLabel: string;
     @Prop( { default: 'normal' } ) weightLabel: string;
     @Prop( { default: true } ) withDefaultImage: boolean;
+
+    @Emit('avatar-click')
+    avatarClick() {
+      return
+    }
 }
 
 </script>
