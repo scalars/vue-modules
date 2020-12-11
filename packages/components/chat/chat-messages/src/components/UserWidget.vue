@@ -9,15 +9,16 @@
             @click="avatarClick"
         />
         <div v-if="username || label" class="vm-user-widget__user-info">
-            <span v-if="username" class="username" @click="$emit('usernameAction')">{{ username }}</span>
+            <span v-if="username" class="vm-user-widget__username" @click="$emit('usernameAction')">{{ username }}</span>
             <span
                 v-if="label"
                 :style="{fontSize: sizeLabel, color: colorLabel, fontWeight: weightLabel}"
+                class="vm-user-widget__label"
                 @click="$emit('labelAction')"
             >
                 {{ label }}
             </span>
-            <span v-if="extra" class="label extra" :style="{color: colorExtra, textDecoration: decorationExtra }">{{ extra }}</span>
+            <span v-if="extra" class="vm-user-widget__extra" :style="{color: colorExtra, textDecoration: decorationExtra }">{{ extra }}</span>
         </div>
     </div>
 </template>
@@ -69,6 +70,10 @@ export default class UserWidget extends Vue {
 
   &label {
     font-size: 0.85em;
+  }
+
+  &extra {
+    font-size: 0.06em;
   }
 
   &avatar {

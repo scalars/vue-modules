@@ -12,6 +12,7 @@
             :picture="header.avatar"
             :username="header.title"
             :label="header.subtitle"
+            :extra="header.helperText"
             @usernameAction="$emit('usernameAction')"
             @labelAction="$emit('labelAction')"
             @avatar-click="avatarClick"

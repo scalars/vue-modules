@@ -16,6 +16,7 @@ export interface Header {
     avatar?: string|null;
     title: string;
     subtitle?: string;
+    helperText?: string;
 }
 
 export interface MenuOption {
