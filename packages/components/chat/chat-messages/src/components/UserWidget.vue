@@ -73,7 +73,7 @@ export default class UserWidget extends Vue {
   }
 
   &extra {
-    font-size: 0.06em;
+    font-size: 0.6em;
   }
 
   &avatar {
