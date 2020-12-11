@@ -16,7 +16,7 @@
           </chat-messages-header>
         </slot>
         <chat-messages-body
-            ref="messages"
+            ref="body"
             class="messages"
             :owner-user-id="ownerUserId"
             :messages="messages"
@@ -78,6 +78,13 @@ export default class ChatMessages extends Vue {
       }
   }
 
+  scrollToEnd() {
+    (this.$refs.body as ChatMessagesBody).scrollToEnd();
+  }
+
+  /**
+   * PRIVATE METHODS
+   **/
   private getScrollAreaHeight() {
       if (this.scrollAreaHeight) {
         return this.scrollAreaHeight

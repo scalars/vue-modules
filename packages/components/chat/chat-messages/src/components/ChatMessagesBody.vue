@@ -59,9 +59,13 @@ export default class ChatMessagesBody extends Vue {
     }
 
     mounted () {
+      // this.scrollToEnd();
+    }
+
+    scrollToEnd () {
+      console.log('called scroll to end')
       const scroll = this.$refs.scroll as any;
       scroll.$el.scrollTop = scroll.$el.clientHeight;
-      console.log(scroll.$el.clientHeight)
     }
 }
 
