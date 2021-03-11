@@ -1,6 +1,6 @@
 {
   "name": "@vuemodules/chat-messages",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
