@@ -1,44 +1,44 @@
 <template>
     <div class="vm-chat-msg__body--container">
-            <perfect-scrollbar class="scroll" :style="{height: scrollAreaHeight}" ref="scroll">
-                <div v-for="(message, index) of messages" :key="`msg-ch${index}`" class="vm-chat-msg__message" :class="{owner: message.userId === ownerUserId}">
-                    <avatar v-if="messagesAvatar && (message.userId !== ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
-                    <div class="vm-chat-msg__message-text-wrapper" :class="{owner: message.userId === ownerUserId}">
-                        <p class="vm-chat-msg__message-text" :class="{owner: message.userId === ownerUserId}">
-                            {{ message.text }}
-                        </p>
-                        <span class="vm-chat-msg__date">{{ message.date }}</span>
-                    </div>
-                  <avatar v-if="messagesAvatar && (message.userId === ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
-                    <div v-if="message.userId === ownerUserId && menu" class="options">
-                        <v-menu offset-y>
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-icon color="accent" v-bind="attrs" v-on="on">
-                                    mdi-dots-vertical
-                                </v-icon>
-                            </template>
-                            <v-list>
-                                <v-list-item
-                                    v-for="(item, i) in menu"
-                                    :key="`menu-${i}`"
-                                >
-                                    <v-list-item-title @click="$emit( item.event, message )">
-                                        {{ item.label }}
-                                    </v-list-item-title>
-                                </v-list-item>
-                            </v-list>
-                        </v-menu>
-                    </div>
+        <perfect-scrollbar class="scroll" :style="{height: scrollAreaHeight}" ref="scroll">
+            <div v-for="(message, index) of messages" :key="`msg-ch${index}`" class="vm-chat-msg__message" :class="{owner: message.userId === ownerUserId}">
+                <avatar v-if="messagesAvatar && (message.userId !== ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
+                <div class="vm-chat-msg__message-text-wrapper" :class="{owner: message.userId === ownerUserId}">
+                    <p class="vm-chat-msg__message-text" :class="{owner: message.userId === ownerUserId}">
+                        {{ message.text }}
+                    </p>
+                    <span class="vm-chat-msg__date">{{ message.date }}</span>
                 </div>
-            </perfect-scrollbar>
+                <avatar v-if="messagesAvatar && (message.userId === ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
+                <div v-if="message.userId === ownerUserId && menu" class="options">
+                    <v-menu offset-y>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-icon color="accent" v-bind="attrs" v-on="on">
+                                mdi-dots-vertical
+                            </v-icon>
+                        </template>
+                        <v-list>
+                            <v-list-item
+                                v-for="(item, i) in menu"
+                                :key="`menu-${i}`"
+                            >
+                                <v-list-item-title @click="$emit( item.event, message )">
+                                    {{ item.label }}
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+                </div>
+            </div>
+        </perfect-scrollbar>
     </div>
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
-import Avatar from './Avatar.vue';
-import { Message, MenuOption, User } from './chatInterfaces';
-import {PerfectScrollbar} from 'vue2-perfect-scrollbar';
+import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import Avatar from './Avatar.vue'
+import { Message, MenuOption, User } from './chatInterfaces'
+import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 
 @Component( {
     components: {
@@ -54,18 +54,13 @@ export default class ChatMessagesBody extends Vue {
     @Prop( { default: true } ) messagesAvatar: boolean;
     @Prop() menu: MenuOption[];
 
-    getUserAvatar(userMessageId: number | string) {
-      return this.users.find(user => user.id === userMessageId)?.avatar;
-    }
-
-    mounted () {
-      // this.scrollToEnd();
+    getUserAvatar( userMessageId: number | string ) {
+        return this.users.find( user => user.id === userMessageId )?.avatar
     }
 
     scrollToEnd () {
-      console.log('called scroll to end')
-      const scroll = this.$refs.scroll as any;
-      scroll.$el.scrollTop = scroll.$el.clientHeight;
+        const scroll = this.$refs.scroll as { $el: Element }
+        scroll.$el.scrollTop = scroll.$el.clientHeight
     }
 }
 

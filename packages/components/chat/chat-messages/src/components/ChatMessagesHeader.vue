@@ -1,11 +1,11 @@
 <template>
     <div v-if="header" class="vm-chat-header__wrapper" data-app>
         <div style="display: inline" @click.stop="actionClick">
-          <slot name="main-action" v-if="includeMainAction">
-            <v-icon class="vm-chat-header__main-action-icon">
-              mdi-arrow-left
-            </v-icon>
-          </slot>
+            <slot name="main-action" v-if="includeMainAction">
+                <v-icon class="vm-chat-header__main-action-icon">
+                    mdi-arrow-left
+                </v-icon>
+            </slot>
         </div>
 
         <user-widget
@@ -19,33 +19,33 @@
         />
 
         <slot name="menu">
-          <div v-if="menu && menu.length > 0" class="options">
-            <v-menu offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                    <v-icon color="accent" v-bind="attrs" v-on="on">
-                        mdi-dots-vertical
-                    </v-icon>
-                </template>
-                <v-list>
-                    <v-list-item
-                        v-for="(item, index) in menu"
-                        :key="index"
-                    >
-                        <v-list-item-title @click="$emit( item.event )">
-                            {{ item.label }}
-                        </v-list-item-title>
-                    </v-list-item>
-                </v-list>
-            </v-menu>
-        </div>
+            <div v-if="menu && menu.length > 0" class="options">
+                <v-menu offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-icon color="accent" v-bind="attrs" v-on="on">
+                            mdi-dots-vertical
+                        </v-icon>
+                    </template>
+                    <v-list>
+                        <v-list-item
+                            v-for="(item, index) in menu"
+                            :key="index"
+                        >
+                            <v-list-item-title @click="$emit( item.event )">
+                                {{ item.label }}
+                            </v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
+            </div>
         </slot>
     </div>
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
-import UserWidget from './UserWidget.vue';
-import { Header, MenuOption } from './chatInterfaces';
+import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import UserWidget from './UserWidget.vue'
+import { Header, MenuOption } from './chatInterfaces'
 
 @Component( {
     components: {
@@ -53,24 +53,20 @@ import { Header, MenuOption } from './chatInterfaces';
     }
 } )
 export default class ChatMessagesHeader extends Vue {
-    @Prop( {default: false} ) includeMainAction: boolean;
+    @Prop( { default: false } ) includeMainAction: boolean;
     @Prop( ) header: Header;
     @Prop() menu: MenuOption[];
 
-    mounted() {
-      console.log(this.menu)
+    //Events
+    @Emit( 'action-click' )
+    actionClick( chat: any ) {
+        return chat
     }
 
-  //Events
-  @Emit('action-click')
-  actionClick(chat: any) {
-    return chat
-  }
-
-  @Emit('avatar-click')
-  avatarClick() {
-    return
-  }
+    @Emit( 'avatar-click' )
+    avatarClick() {
+        return
+    }
 }
 
 </script>

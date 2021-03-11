@@ -10,26 +10,26 @@
                 @keyup.enter="sendMessage"
             />
         </slot>
-       <slot name="send-btn">
-        <v-btn @click.stop="sendMessage" class="vm-chat-msg__input-send-btn">
-          <v-icon>
-            mdi-send
-          </v-icon>
-        </v-btn>
-       </slot>
+        <slot name="send-btn">
+            <v-btn @click.stop="sendMessage" class="vm-chat-msg__input-send-btn">
+                <v-icon>
+                    mdi-send
+                </v-icon>
+            </v-btn>
+        </slot>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component( {} )
 export default class ChatMessagesInput extends Vue {
     message = '';
 
     sendMessage () {
-        this.$emit( 'sendMessage', this.message );
-        this.message = '';
+        this.$emit( 'sendMessage', this.message )
+        this.message = ''
     }
 }
 

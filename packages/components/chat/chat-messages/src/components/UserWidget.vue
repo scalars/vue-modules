@@ -24,8 +24,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
-import Avatar from './Avatar.vue';
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import Avatar from './Avatar.vue'
 
 @Component( {
     components: { Avatar }
@@ -43,9 +43,9 @@ export default class UserWidget extends Vue {
     @Prop( { default: 'normal' } ) weightLabel: string;
     @Prop( { default: true } ) withDefaultImage: boolean;
 
-    @Emit('avatar-click')
+    @Emit( 'avatar-click' )
     avatarClick() {
-      return
+        return
     }
 }
 
