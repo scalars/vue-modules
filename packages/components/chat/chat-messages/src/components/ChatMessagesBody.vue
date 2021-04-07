@@ -59,8 +59,8 @@ export default class ChatMessagesBody extends Vue {
     }
 
     scrollToEnd () {
-        const scroll = this.$refs.scroll as { $el: Element }
-        scroll.$el.scrollTop = scroll.$el.clientHeight
+        const scroll: Vue = ( this.$refs.scroll as Vue )
+        scroll.$el.scrollTop = scroll.$el.scrollHeight
     }
 }
 
@@ -78,7 +78,6 @@ export default class ChatMessagesBody extends Vue {
 
 .vm-chat-msg__message {
     display: flex;
-    align-items: flex-end;
     padding: 10px;
     max-width: 75%;
 

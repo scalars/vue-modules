@@ -35,6 +35,9 @@ const header = {
     subtitle: 'Great Chat'
 }
 
+const menu =  [
+    { event: 'event-one', label: 'Label One' }
+]
 const headerMenu = [ {
     label: 'My option',
     event: 'my-menu'
@@ -42,5 +45,5 @@ const headerMenu = [ {
 
 new Vue( {
     vuetify,
-    render: createElement => createElement( ChatMessages, { props: { messages: messages, users, ownerUserId: 1, header, headerMenu, includeMainAction: true } } )
+    render: createElement => createElement( ChatMessages, { props: { menu, messages: messages, users, ownerUserId: 1, header, headerMenu, includeMainAction: true } } )
 } ).$mount( '#app' )
