@@ -59,7 +59,7 @@ export default class ChatMessagesHeader extends Vue {
 
     //Events
     @Emit( 'action-click' )
-    actionClick( chat: any ) {
+    actionClick( chat: Record<string, any> ) {
         return chat
     }
 

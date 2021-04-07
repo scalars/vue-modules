@@ -13,7 +13,10 @@
                 <div v-if="message.userId === ownerUserId && menu" class="options">
                     <v-menu offset-y>
                         <template v-slot:activator="{ on, attrs }">
-                            <v-icon color="accent" v-bind="attrs" v-on="on">
+                            <v-icon color="accent"
+                                    v-bind="attrs"
+                                    v-on="on"
+                            >
                                 mdi-dots-vertical
                             </v-icon>
                         </template>
@@ -22,7 +25,7 @@
                                 v-for="(item, i) in menu"
                                 :key="`menu-${i}`"
                             >
-                                <v-list-item-title @click="$emit( item.event, message )">
+                                <v-list-item-title @click="actionOnMessage( { option: item, message } )">
                                     {{ item.label }}
                                 </v-list-item-title>
                             </v-list-item>
@@ -35,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
 import Avatar from './Avatar.vue'
 import { Message, MenuOption, User } from './chatInterfaces'
 import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
@@ -53,6 +56,11 @@ export default class ChatMessagesBody extends Vue {
     @Prop( { default: 'calc(100vh - 40px)' } ) scrollAreaHeight: string;
     @Prop( { default: true } ) messagesAvatar: boolean;
     @Prop() menu: MenuOption[];
+
+    @Emit()
+    actionOnMessage ( data: { option: MenuOption; message: Message } ) {
+        return data
+    }
 
     getUserAvatar( userMessageId: number | string ) {
         return this.users.find( user => user.id === userMessageId )?.avatar

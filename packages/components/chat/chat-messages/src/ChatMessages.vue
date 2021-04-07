@@ -24,6 +24,7 @@
             :users="users"
             :messages-avatar="messagesAvatar"
             :scroll-area-height="getScrollAreaHeight()"
+            @action-on-message="actionOnMessage"
         />
         <slot name="chat-input">
             <chat-messages-input @sendMessage="sendMessage($event)"/>
@@ -94,6 +95,10 @@ export default class ChatMessages extends Vue {
         } else {
             return 'calc(100vh - 40px)'
         }
+    }
+
+    private actionOnMessage( { option, message }: { option: MenuOption; message: Message } ) {
+        this.$emit( option.event, message )
     }
 
     /**
