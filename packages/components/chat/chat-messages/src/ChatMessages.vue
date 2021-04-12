@@ -26,7 +26,7 @@
             :scroll-area-height="getScrollAreaHeight()"
         />
         <slot name="chat-input">
-          <chat-messages-input @sendMessage="sendMessage($event)"/>
+          <chat-messages-input :disabled="disabledSendButton" @sendMessage="sendMessage($event)"/>
         </slot>
     </div>
 </template>
@@ -58,6 +58,7 @@ export default class ChatMessages extends Vue {
    **/
   @Prop( { default: false } ) messagesAvatar: boolean; //default: false
   @Prop( { default: false } ) includeMainAction: boolean; //default: false
+  @Prop( { default: false } ) disabledSendButton: boolean; //default: false
   @Prop() scrollAreaHeight: string;
   @Prop() menu: MenuOption[];
   @Prop() headerMenu: MenuOption[];
