@@ -11,7 +11,7 @@
             />
         </slot>
         <slot name="send-btn">
-            <v-btn @click.stop="sendMessage" :disabled="disabledButton" class="vm-chat-msg__input-send-btn">
+            <v-btn @click.stop="sendMessage" :disabled="!message || disabledButton" class="vm-chat-msg__input-send-btn">
                 <v-icon>
                     mdi-send
                 </v-icon>
