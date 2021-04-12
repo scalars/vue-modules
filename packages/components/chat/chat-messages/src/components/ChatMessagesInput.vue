@@ -11,7 +11,7 @@
             />
         </slot>
         <slot name="send-btn">
-            <v-btn @click.stop="sendMessage" class="vm-chat-msg__input-send-btn">
+            <v-btn @click.stop="sendMessage" :disabled="disabledButton" class="vm-chat-msg__input-send-btn">
                 <v-icon>
                     mdi-send
                 </v-icon>
@@ -21,10 +21,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
 @Component( {} )
 export default class ChatMessagesInput extends Vue {
+    @Prop( { default: false } ) disabledButton: boolean;
+
     message = '';
 
     sendMessage () {
