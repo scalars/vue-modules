@@ -1,4 +1,4 @@
-import ChatMessages from "./ChatMessages";
+import ChatMessages from './ChatMessages'
 
-export default ChatMessages;
-export { ChatMessages };
+export default ChatMessages
+export { ChatMessages }

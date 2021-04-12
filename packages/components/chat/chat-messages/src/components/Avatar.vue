@@ -21,11 +21,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Avatar extends Vue {
-    @Prop( {required: true} ) pictureUrl: string;
+    @Prop( { required: true } ) pictureUrl: string;
     @Prop( { default: 'mdi-fire' } ) icon: string;
     @Prop( { default: '82px' } ) size: string;
     @Prop( { default: 45 } ) angle: number;
@@ -33,19 +33,19 @@ export default class Avatar extends Vue {
     @Prop( { default: true } ) withDefaultImage: boolean;
 
     get x () {
-        return this.radius * Math.cos( this.radian( this.angle ) );
+        return this.radius * Math.cos( this.radian( this.angle ) )
     }
 
     get y () {
-        return this.radius * Math.sin( this.radian( this.angle ) );
+        return this.radius * Math.sin( this.radian( this.angle ) )
     }
 
     get radius () {
-        return parseInt( this.size.replace( 'px', '' ) ) / 2.0;
+        return parseInt( this.size.replace( 'px', '' ) ) / 2.0
     }
 
     radian ( angle: number ) {
-        return angle * Math.PI / 180;
+        return angle * Math.PI / 180
     }
 }
 

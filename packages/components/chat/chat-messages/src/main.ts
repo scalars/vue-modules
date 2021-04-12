@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import ChatMessages from './ChatMessages.vue'
-import vuetify from './plugins/vuetify';
-import {Message, User} from "@/components/chatInterfaces";
+import vuetify from './plugins/vuetify'
+import { Message, User } from '@/components/chatInterfaces'
 
 Vue.config.productionTip = false
 
 const messages: Message [] = [
-    {id: 1, text: 'helloooo world', date: 'jan 1, 2020', userId: 1},
-    {id: 2, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2},
-    {id: 3, text: `helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123  helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123' +
-            helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123`, date: 'jan 1, 2020', userId: 1},
-    {id: 4, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2},
-    {id: 5, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1},
-    {id: 6, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1},
-    {id: 7, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1}
+    { id: 1, text: 'helloooo world', date: 'jan 1, 2020', userId: 1 },
+    { id: 2, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2 },
+    { id: 3, text: `helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123  helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123' +
+            helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123`, date: 'jan 1, 2020', userId: 1 },
+    { id: 4, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2 },
+    { id: 5, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1 },
+    { id: 6, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1 },
+    { id: 7, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1 }
 ]
 
 const users: User [] = [
@@ -31,16 +31,19 @@ const users: User [] = [
 
 const header = {
     avatar: 'https://free-images.com/lg/5c4e/mont_blanc_2005_118.jpg',
-    title: "My chat",
+    title: 'My chat',
     subtitle: 'Great Chat'
 }
 
-const headerMenu = [{
+const menu =  [
+    { event: 'event-one', label: 'Label One' }
+]
+const headerMenu = [ {
     label: 'My option',
     event: 'my-menu'
-}]
+} ]
 
-new Vue({
-  vuetify,
-  render: createElement => createElement(ChatMessages, {props: {messages: messages, users, ownerUserId: 1, header, headerMenu, includeMainAction: true}})
-}).$mount('#app')
+new Vue( {
+    vuetify,
+    render: createElement => createElement( ChatMessages, { props: { menu, messages: messages, users, ownerUserId: 1, header, headerMenu, includeMainAction: true } } )
+} ).$mount( '#app' )
