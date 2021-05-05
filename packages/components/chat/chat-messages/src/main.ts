@@ -8,12 +8,11 @@ Vue.config.productionTip = false
 const messages: Message [] = [
     { id: 1, text: 'helloooo world', date: 'jan 1, 2020', userId: 1 },
     { id: 2, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2 },
-    { id: 3, text: `helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123  helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123 helloooo world 2231 123' +
-            helloooo world 2231 123 helloooo world 2231 123helloooo world 2231 123helloooo world 2231 123`, date: 'jan 1, 2020', userId: 1 },
+    { id: 3, text: `helloooo world 2231 123`, date: 'jan 1, 2020', userId: 1 },
     { id: 4, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 2 },
     { id: 5, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1 },
     { id: 6, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1 },
-    { id: 7, text: 'helloooo world fsadfasd fa', date: 'jan 1, 2020', userId: 1 }
+    { id: 7, text: 'helloooo world www.google.com soles 4 ', date: 'jan 1, 2020', userId: 1 }
 ]
 
 const users: User [] = [

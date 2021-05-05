@@ -5,7 +5,10 @@
                 <avatar v-if="messagesAvatar && (message.userId !== ownerUserId)" :picture-url="getUserAvatar(message.userId)" :action="false" size="35px" class="avatar" />
                 <div class="vm-chat-msg__message-text-wrapper" :class="{owner: message.userId === ownerUserId}">
                     <p class="vm-chat-msg__message-text" :class="{owner: message.userId === ownerUserId}">
-                        {{ message.text }}
+                        <span v-for="( text, index ) of message.text.split(urlRegex)" :key="index">
+                            <a v-if="text.match( urlRegex )" :href="parserLink(text)" v-text="text" target="_blank" class="vm-chat-msg__link" />
+                            <span v-else v-text="text"/>
+                        </span>
                     </p>
                     <span class="vm-chat-msg__date">{{ message.date }}</span>
                 </div>
@@ -57,6 +60,8 @@ export default class ChatMessagesBody extends Vue {
     @Prop( { default: true } ) messagesAvatar: boolean;
     @Prop() menu: MenuOption[];
 
+    urlRegex = new RegExp( /([(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*))/ig )
+
     @Emit()
     actionOnMessage ( data: { option: MenuOption; message: Message } ) {
         return data
@@ -69,6 +74,12 @@ export default class ChatMessagesBody extends Vue {
     scrollToEnd () {
         const scroll: Vue = ( this.$refs.scroll as Vue )
         scroll.$el.scrollTop = scroll.$el.scrollHeight
+    }
+
+    parserLink( link: string ) {
+        return link.startsWith( 'http://' ) || link.startsWith( 'https://' ) ?
+            link
+            : `//${link}`
     }
 }
 
