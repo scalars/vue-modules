@@ -30,8 +30,10 @@ export default class ChatMessagesInput extends Vue {
     message = '';
 
     sendMessage () {
-        this.$emit( 'sendMessage', this.message )
-        this.message = ''
+        if ( this.message.trim() ) {
+            this.$emit( 'sendMessage', this.message )
+            this.message = ''
+        }
     }
 }
 
